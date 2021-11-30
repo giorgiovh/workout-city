@@ -5,4 +5,18 @@
 <section class="page-header">
     <h1>Workouts</h1>
 </section>
+
+<section class="card-container">
+    {% for workout in workouts %}
+        <div class="card">
+            <div class="card-content">
+                <div class="card-img-container">
+                    <img src="" alt="">
+                </div>
+                <h2 class="card-title">{{ workout.day_of_week}}</h2>
+                <p>{{ workout.muscle_grp }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</section>
 {% endblock content %}
