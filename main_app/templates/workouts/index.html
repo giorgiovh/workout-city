@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/workout-index.css' %}">
+{% endblock head %}
+
 {% block content %}
 <section class="page-header">
     <h1>Workouts</h1>
@@ -11,7 +15,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-img-container">
-                    <img src="" alt="">
+                    <img class="generic-workout" src="{% static 'images/barbell-dl gray.jpg' %}" alt="">
                 </div>
                 <h2 class="card-title">{{ workout.day_of_week}}</h2>
                 <p>{{ workout.muscle_grp }}</p>
