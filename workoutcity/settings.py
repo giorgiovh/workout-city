@@ -27,14 +27,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#! Set Debug = False (For Deployment)
 DEBUG = True
-
-
+#! Add '127.0.0.1', '.herokuapp.com' into Allowed Hosts (For Deployment)
 ALLOWED_HOSTS = []
-# '127.0.0.1', '.herokuapp.com'
+
+#! Otherwise keep as is for App Development
 
 # Application definition
-
 INSTALLED_APPS = [
     'main_app',
     'django.contrib.admin',
