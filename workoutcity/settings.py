@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import environ
 env = environ.Env()
 environ.Env.read_env()
-import django_on_heroku
-django_on_heroku.settings(locals())
+# import django_on_heroku django_on_heroku.settings(locals())
 
 from pathlib import Path
 
@@ -28,17 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-DEBUG_PROPAGATE_EXCEPTIONS = True
+DEBUG = True
+
 
 ALLOWED_HOSTS = []
-# '127.0.0.1', '.herokuapp.com'
 
 # Application definition
 
 INSTALLED_APPS = [
     'main_app',
-    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,9 +85,6 @@ DATABASES = {
         'NAME': 'workoutcity',
     }
 }
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -136,6 +130,3 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
