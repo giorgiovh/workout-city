@@ -11,6 +11,10 @@ def about(request):
     return render(request, 'about.html')
 
 
+def workouts_index(request):
+    return render(request, 'workouts/index.html', {'workouts': workouts})
+
+
 class Workout:  # This is the class & list function for creating workouts
     def __init__(self, muscle_grp, day_of_week, description, difficulty):
         self.muscle_grp = muscle_grp
