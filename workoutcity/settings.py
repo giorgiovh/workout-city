@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import environ
 env = environ.Env()
 environ.Env.read_env()
+# import django_on_heroku django_on_heroku.settings(locals())
 
 from pathlib import Path
 
@@ -26,13 +27,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#! Set Debug = False (For Deployment)
 DEBUG = True
-
+#! Add '127.0.0.1', '.herokuapp.com' into Allowed Hosts (For Deployment)
 ALLOWED_HOSTS = []
 
+#! Otherwise keep as is for App Development
 
 # Application definition
-
 INSTALLED_APPS = [
     'main_app',
     'django.contrib.admin',
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'workoutcity.urls'
@@ -127,3 +130,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
