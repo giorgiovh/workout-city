@@ -6,10 +6,8 @@ from .models import Workout
 def home(request):
     return render(request, 'home.html')
 
-
 def about(request):
     return render(request, 'about.html')
-
 
 def workouts_index(request):
     workouts = Workout.objects.all()
