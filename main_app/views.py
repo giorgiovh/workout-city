@@ -78,8 +78,13 @@ def workouts_index(request):
 @login_required
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
+    exercises_workout_doesnt_have = Exercise.objects.exclude(id__in = workout.exercises.all().values_list('id'))
     did_workout_form = DidWorkoutForm()
-    return render(request, 'workouts/detail.html', {'workout': workout, 'did_workout_form': did_workout_form})
+    return render(request, 'workouts/detail.html', {
+    'workout': workout, 
+    'did_workout_form': did_workout_form,
+    'exercises': exercises_workout_doesnt_have
+    })
 
 
 def add_didworkout(request, workout_id):
@@ -91,3 +96,7 @@ def add_didworkout(request, workout_id):
         new_didworkout.workout_id = workout_id
         new_didworkout.save()
     return redirect('workouts_detail', workout_id=workout_id)
+
+def assoc_exercise(request, workout_id, exercise_id):
+  Workout.objects.get(id=workout_id).exercises.add(exercise_id)
+  return redirect('workouts_detail', workout_id=workout_id)
