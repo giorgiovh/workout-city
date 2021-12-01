@@ -10,6 +10,13 @@ class Workout(models.Model):
     description = models.TextField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+class DidWorkout(models.Model):
+    date = models.DateField()
+    did_workout = models.CharField(max_length=1)
+    DIDYOU =  (
+        ('Y', 'Yes'),
+        ('N', 'No')
+    )
     def __str__(self):
         return self.muscle_grp
 

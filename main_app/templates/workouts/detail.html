@@ -20,16 +20,12 @@
   </div>
   <div class="workout-details">
     <h1>{{ workout.muscle_grp }}</h1>
-      <h2>{{ workout.day_of_week }}</h2>
+    <h2>{{ workout.day_of_week }}</h2>
     <p>{{ workout.description }}</p>
-  </div>
-</section>
-
-{% endblock %}
-<p>{{ workout.description }}</p>
     <div class="workout-actions">
       <a href="{% url 'workouts_update' workout.id %}" class="btn warn">Edit</a>
       <a href="{% url 'workouts_delete' workout.id %}" class="btn danger">Delete</a>
     </div>
   </div>
 </section>
+{% endblock %}
