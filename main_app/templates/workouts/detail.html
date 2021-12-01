@@ -28,4 +28,38 @@
     </div>
   </div>
 </section>
+
+<div class="workouts-toy-container">
+    <section class="workouts">
+      <div class="subsection-title">
+        <h2>Workouts</h2>
+        <img 
+          src="{% static 'images/' %}" 
+          alt=""
+        />
+        <img 
+          src="{% static 'images/' %}"
+          alt=""
+        />
+        <img 
+          src="{% static 'images/' %}" 
+          alt=""
+        />
+      </div>
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Did you Workout?</th></tr>
+        </thead>
+        <tbody>
+          {% for didworkout in workout.didworkout_set.all %}
+            <tr>
+              <td>{{didworkout.date}}</td>
+              <td>{{didworkout.get_did_workout_display}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+
 {% endblock %}

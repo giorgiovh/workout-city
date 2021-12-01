@@ -4,8 +4,8 @@ from django.urls import reverse
 # Create your models here.
 
 DIDYOU =  (
-    ('Y', 'Yes'),
-    ('N', 'No')
+    ('Y', 'Worked out'),
+    ('N', 'Did not workout')
 )
 
 class Workout(models.Model):
