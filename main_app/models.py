@@ -2,7 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import date
+
 # Create your models here.
+DIDYOU =  (
+    ('Y', 'Worked out'),
+    ('N', 'Did not workout')
+)
 
 class Exercise(models.Model):
     name = models.CharField(max_length=50)
@@ -17,16 +22,12 @@ class Exercise(models.Model):
     def get_absolute_url(self):
         return reverse("exercises_detail", kwargs={"pk": self.id})
 
-DIDYOU =  (
-    ('Y', 'Worked out'),
-    ('N', 'Did not workout')
-)
-
 class Workout(models.Model):
     muscle_grp = models.CharField(max_length=50)
     day_of_week = models.CharField(max_length=50)
     description = models.TextField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    exercises = models.ManyToManyField(Exercise)
 
     def __str__(self):
         return self.muscle_grp

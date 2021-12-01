@@ -38,7 +38,7 @@
   </div>
 </section>
 
-<div class="workouts-toy-container">
+<div class="workouts-exercise-container">
     <section class="workouts">
       <div class="subsection-title">
         <h2>Workouts</h2>
@@ -90,6 +90,63 @@
     <p class="subsection-content">{{user.username}} has never worked out {{workout.muscle_grp}}. Do you even lift, {{user.username}}?</p>
     {% endif %}
     </section>
+    <section class="exercises">
+      <div class="subsection-title">
+        <h2>Exercises</h2>
+        {% comment %} <img src="{% static 'images/' %}" alt="" />
+        <img src="{% static 'images/' %}" alt="" />
+        <img src="{% static 'images/' %}" alt="" /> {% endcomment %}
+      </div>
+      <h3>{{ workout.name }}'s exercises</h3>
+      <div class="subsection-content">
+        {% if workout.exercises.count %}
+          {% for exercise in workout.exercises.all %}
+            <div class="exercise-container">
+              <div 
+                class="color-block">
+              </div>
+              <a href="{% url 'exercises_detail' exercise.id %}">
+                <p>A {{ exercise.name }}</p>
+              </a>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="no-exercises">{{workout.muscle_grp}} doesn't have any exercises 😞</p>
+        {% endif %}
+      </div>
+      <h3>Available exercises</h3>
+      <div class="subsection-content">
   </div>
+      {% comment %} We'll display available exercises here {% endcomment %}
+      {% if exercises.count %}
+        {% for exercise in exercises.all %}
+          <div class="exercise-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ exercise.color }}"
+            ></div>
+            <a href="{% url 'exercises_detail' exercise.id %}">
+              <p>A {{ exercise.color }} {{ exercise.name }}</p>
+            </a>
+            <form action="" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn submit">Add Exercise</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="all-exercises">
+          {{workout.name}} already has all the available exercises 🥳
+        </p>
+      {% endif %}
+    </div>
+  </section>
+  <div class="card-action">
+    <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
+        {% csrf_token %}
+      <button type="submit" class="btn">Add</button>
+    </form>
+  </div>
+</div>
 
 {% endblock %}
