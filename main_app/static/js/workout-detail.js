@@ -1,1 +1,2 @@
-console.log('aaaaaa');
+const dateInput = document.getElementById('id_date')
+
