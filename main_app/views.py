@@ -17,7 +17,9 @@ class WorkoutCreate(CreateView):
     model = Workout
     fields = ['muscle_grp', 'day_of_week', 'description']
     success_url = '/workouts/'
-
+class WorkoutUpdate(UpdateView):
+  model = Workout
+  fields = ['breed', 'description', 'age']
 
 
 def signup(request):
