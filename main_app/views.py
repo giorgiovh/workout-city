@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
 
