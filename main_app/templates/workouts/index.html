@@ -13,7 +13,7 @@
 <section class="card-container">
     {% for workout in workouts %}
         <div class="card">
-            <a href="/workouts/{{ workout.id }}">
+            <a href="{% url 'workouts_detail' workout.id %}">
                 <div class="card-content">
                     <div class="card-img-container">
                         <img class="generic-workout" src="{% static 'images/barbell-dl gray.jpg' %}" alt="">

@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView
 from .models import Workout
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
+from django.views.generic import ListView
+
 # Create your views here.
 
 
@@ -36,9 +39,16 @@ def workouts_index(request):
     workouts = Workout.objects.filter(user=request.user)
     return render(request, 'workouts/index.html', {'workouts': workouts})
 
+# @login_required
+# class WorkoutList(ListView):
+#     model = Workout
+#     template_name = 'workouts/index.html'
+
+class WorkoutCreate(CreateView):
+    model = Workout
+    fields = ['muscle_grp', 'day_of_week', 'description']
+
 @login_required
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
     return render(request, 'workouts/detail.html', {'workout': workout})
-
-#Hello
