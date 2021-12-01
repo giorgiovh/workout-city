@@ -4,6 +4,19 @@ from django.urls import reverse
 from datetime import date
 # Create your models here.
 
+class Exercise(models.Model):
+    name = models.CharField(max_length=50)
+    muscle = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
+    sets = models.IntegerField()
+    reps = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("exercises_detail", kwargs={"pk": self.id})
+
 DIDYOU =  (
     ('Y', 'Worked out'),
     ('N', 'Did not workout')
