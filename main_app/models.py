@@ -14,6 +14,12 @@ class Workout(models.Model):
     description = models.TextField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.muscle_grp
+
+    def get_absolute_url(self):
+        return reverse("workouts_detail", kwargs={'workout_id': self.id})
+
 class DidWorkout(models.Model):
     date = models.DateField()
     did_workout = models.CharField(
@@ -21,10 +27,9 @@ class DidWorkout(models.Model):
         choices=DIDYOU,
         default=DIDYOU[0][0]
         )
+    workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.muscle_grp
-
-    def get_absolute_url(self):
-        return reverse("workouts_detail", kwargs={'workout_id': self.id})
+        return f"{self.get_did_workout_display()} on {self.date}"
+        
     
