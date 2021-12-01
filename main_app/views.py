@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Workout
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 # Create your views here.
 
@@ -30,12 +31,12 @@ class Home(LoginView):
 def about(request):
     return render(request, 'about.html')
 
-
+@login_required
 def workouts_index(request):
     workouts = Workout.objects.filter(user=request.user)
     return render(request, 'workouts/index.html', {'workouts': workouts})
 
-
+@login_required
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
     return render(request, 'workouts/detail.html', {'workout': workout})
