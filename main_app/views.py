@@ -63,3 +63,7 @@ def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
     did_workout_form = DidWorkoutForm()
     return render(request, 'workouts/detail.html', {'workout': workout, 'did_workout_form': did_workout_form})
+
+
+def add_didworkout(request, workout_id):
+    pass
