@@ -24,7 +24,7 @@ class WorkoutCreate(CreateView):
 
 class WorkoutUpdate(UpdateView):
     model = Workout
-    fields = ['breed', 'description', 'age']
+    fields = ['muscle_grp', 'day_of_week', 'description']
 
 
 class WorkoutDelete(DeleteView):

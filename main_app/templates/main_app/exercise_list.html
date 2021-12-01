@@ -26,10 +26,10 @@
     <a href="{% url 'exercises_detail' exercise.id %}">
       <div class="card-content">
         <h2>{{ exercise.name }}</h2>
-        <p>Targeted muscle: {{ exercise.muscle }}</p>
+        {% comment %} <p>Targeted muscle: {{ exercise.muscle }}</p>
         <p>Description: {{ exercise.description }}</p>
         <p>Sets: {{ exercise.sets }}</p>
-        <p>Reps: {{ exercise.reps }}</p>
+        <p>Reps: {{ exercise.reps }}</p> {% endcomment %}
       </div>
     </a>
   </div>
