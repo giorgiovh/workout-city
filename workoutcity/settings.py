@@ -30,7 +30,7 @@ SECRET_KEY = env('SECRET_KEY')
 #! Set Debug = False (For Deployment)
 DEBUG = True
 #! Add '127.0.0.1', '.herokuapp.com' into Allowed Hosts (For Deployment)
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 #! Otherwise keep as is for App Development
 
