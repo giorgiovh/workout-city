@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
-from .models import Workout
+from .models import Workout, Exercise
 from .forms import DidWorkoutForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
