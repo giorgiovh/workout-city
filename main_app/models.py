@@ -4,6 +4,9 @@ from django.urls import reverse
 from datetime import date
 # Create your models here.
 
+class Exercise(models.Model):
+    
+
 DIDYOU =  (
     ('Y', 'Worked out'),
     ('N', 'Did not workout')
