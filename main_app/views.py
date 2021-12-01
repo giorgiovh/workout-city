@@ -32,7 +32,7 @@ def about(request):
 
 
 def workouts_index(request):
-    workouts = Workout.objects.all()
+    workouts = Workout.objects.filter(user=request.user)
     return render(request, 'workouts/index.html', {'workouts': workouts})
 
 
