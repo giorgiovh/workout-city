@@ -5,6 +5,11 @@ from datetime import date
 # Create your models here.
 
 class Exercise(models.Model):
+    name = models.CharField(max_length=50)
+    muscle = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
+    sets = models.IntegerField()
+    reps = models.IntegerField()
     
 
 DIDYOU =  (
