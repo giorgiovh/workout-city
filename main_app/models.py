@@ -27,6 +27,7 @@ class Workout(models.Model):
     day_of_week = models.CharField(max_length=50)
     description = models.TextField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    exercises = models.ManyToManyField(Exercise)
 
     def __str__(self):
         return self.muscle_grp
