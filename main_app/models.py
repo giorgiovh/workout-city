@@ -16,9 +16,6 @@ class Exercise(models.Model):
 
     def get_absolute_url(self):
         return reverse("exercises_detail", kwargs={"pk": self.id})
-    
-    
-    
 
 DIDYOU =  (
     ('Y', 'Worked out'),
