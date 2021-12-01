@@ -40,3 +40,5 @@ def workouts_index(request):
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
     return render(request, 'workouts/detail.html', {'workout': workout})
+
+#Hello
