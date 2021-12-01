@@ -117,5 +117,30 @@
       <h3>Available exercises</h3>
       <div class="subsection-content">
   </div>
+      {% comment %} We'll display available exercises here {% endcomment %}
+      {% if exercises.count %}
+        {% for exercise in exercises.all %}
+          <div class="exercise-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ exercise.color }}"
+            ></div>
+            <a href="{% url 'exercises_detail' exercise.id %}">
+              <p>A {{ exercise.color }} {{ exercise.name }}</p>
+            </a>
+            <form action="" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn submit">Add Exercise</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="all-exercises">
+          {{workout.name}} already has all the available exercises 🥳
+        </p>
+      {% endif %}
+    </div>
+  </section>
+</div>
 
 {% endblock %}
