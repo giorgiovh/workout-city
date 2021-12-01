@@ -9,6 +9,15 @@ from django.views.generic import ListView
 
 # Create your views here.
 
+class Home(LoginView):
+    template_name = 'home.html'
+
+class WorkoutCreate(CreateView):
+    model = Workout
+    fields = ['muscle_grp', 'day_of_week', 'description']
+    success_url = '/workouts/'
+
+
 
 def signup(request):
     error_message = ''
@@ -26,11 +35,6 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
 
-
-class Home(LoginView):
-    template_name = 'home.html'
-
-
 def about(request):
     return render(request, 'about.html')
 
@@ -44,9 +48,6 @@ def workouts_index(request):
 #     model = Workout
 #     template_name = 'workouts/index.html'
 
-class WorkoutCreate(CreateView):
-    model = Workout
-    fields = ['muscle_grp', 'day_of_week', 'description']
 
 @login_required
 def workouts_detail(request, workout_id):
