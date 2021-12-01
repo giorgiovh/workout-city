@@ -1,14 +1,18 @@
 from django.shortcuts import render
 from .models import Workout
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 # Create your views here.
 
 def signup(request):
     error_message = ''
-    if request.method == 'POST'
-    #Here we create a 'user' form object including data from the browser
-    
-    
+    if request.method == 'POST':
+        #Here we create a 'user' form object
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save() #Add user to database
+            login(request, user) #Login the user
     
     
 class Home(LoginView):
