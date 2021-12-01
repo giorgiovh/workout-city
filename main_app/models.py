@@ -1,8 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 # Create your models here.
 
+DIDYOU =  (
+    ('Y', 'Worked out'),
+    ('N', 'Did not workout')
+)
 
 class Workout(models.Model):
     muscle_grp = models.CharField(max_length=50)
@@ -12,3 +16,20 @@ class Workout(models.Model):
 
     def __str__(self):
         return self.muscle_grp
+
+    def get_absolute_url(self):
+        return reverse("workouts_detail", kwargs={'workout_id': self.id})
+
+class DidWorkout(models.Model):
+    date = models.DateField('Workout date')
+    did_workout = models.CharField(
+        max_length=1,
+        choices=DIDYOU,
+        default=DIDYOU[0][0]
+        )
+    workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.get_did_workout_display()} on {self.date}"
+        
+    

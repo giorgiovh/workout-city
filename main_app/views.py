@@ -6,8 +6,25 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
+
+class Home(LoginView):
+    template_name = 'home.html'
+
+class WorkoutCreate(CreateView):
+    model = Workout
+    fields = ['muscle_grp', 'day_of_week', 'description']
+    success_url = '/workouts/'
+
+class WorkoutUpdate(UpdateView):
+  model = Workout
+  fields = ['breed', 'description', 'age']
+
+class WorkoutDelete(DeleteView):
+  model = Workout
+  success_url = '/workouts/'  
 
 
 def signup(request):
@@ -26,11 +43,6 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
 
-
-class Home(LoginView):
-    template_name = 'home.html'
-
-
 def about(request):
     return render(request, 'about.html')
 
@@ -44,9 +56,6 @@ def workouts_index(request):
 #     model = Workout
 #     template_name = 'workouts/index.html'
 
-class WorkoutCreate(CreateView):
-    model = Workout
-    fields = ['muscle_grp', 'day_of_week', 'description']
 
 @login_required
 def workouts_detail(request, workout_id):
