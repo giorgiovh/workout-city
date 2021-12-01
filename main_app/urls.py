@@ -9,5 +9,6 @@ urlpatterns = [
     path('workouts/create/', views.WorkoutCreate.as_view(), name='workouts_create'),
     path('workouts/<int:pk>/update/', views.WorkoutUpdate.as_view(), name='workouts_update'),
     path('workouts/<int:pk>/delete/', views.WorkoutDelete.as_view(), name='workouts_delete'),
+    path('workouts/<int:workout_id>/add_didworkout/', views.add_didworkout, name='add_didworkout'),
     path('accounts/signup/', views.signup, name='signup'),
 ]

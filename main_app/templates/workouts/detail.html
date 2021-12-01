@@ -3,20 +3,29 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/workout-detail.css' %}"
 />
+<script defer src="{% static 'js/workout-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 
 <section class="workout-container">
   <div class="workout-img">
-    <img 
+    {% comment %} <img 
       src="{% static 'images/' %}" 
       alt=""
-    >
+    > {% endcomment %}
   </div>
   <div class="workout-details">
     <h1>{{ workout.muscle_grp }}</h1>
@@ -33,7 +42,7 @@
     <section class="workouts">
       <div class="subsection-title">
         <h2>Workouts</h2>
-        <img 
+        {% comment %} <img 
           src="{% static 'images/' %}" 
           alt=""
         />
@@ -44,8 +53,19 @@
         <img 
           src="{% static 'images/' %}" 
           alt=""
-        />
+        /> {% endcomment %}
       </div>
+
+      <h3>Add a Workout Date</h3>
+      <form
+      method="post" 
+      class="subsection-content"
+      >
+        {% csrf_token %}
+        {{ did_workout_form.as_p }}
+        <button type="submit" class="btn submit">Add Workout Date</button>
+      </form>
+    <h3>Past Workouts</h3>
       <table>
         <thead>
           <tr><th>Date</th><th>Did you Workout?</th></tr>
@@ -59,6 +79,7 @@
           {% endfor %}
         </tbody>
       </table>
+
     </section>
   </div>
 

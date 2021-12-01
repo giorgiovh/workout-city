@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
 from .models import Workout
+from .forms import DidWorkoutForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -60,4 +61,5 @@ def workouts_index(request):
 @login_required
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
-    return render(request, 'workouts/detail.html', {'workout': workout})
+    did_workout_form = DidWorkoutForm()
+    return render(request, 'workouts/detail.html', {'workout': workout, 'did_workout_form': did_workout_form})
