@@ -6,7 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
@@ -34,6 +34,12 @@ class WorkoutDelete(DeleteView):
 class ExerciseCreate(CreateView):
     model = Exercise
     fields = '__all__'
+
+class ExerciseList(ListView):
+    model = Exercise
+
+class ExerciseDetail(DetailView):
+    model = Exercise
 
 def signup(request):
     error_message = ''
