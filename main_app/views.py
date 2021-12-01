@@ -78,3 +78,4 @@ def add_didworkout(request, workout_id):
         #don't save form until workout_id is assigned
         new_didworkout = form.save(commit=False)
         new_didworkout.workout_id = workout_id
+        new_didworkout.save()
