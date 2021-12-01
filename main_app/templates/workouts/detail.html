@@ -62,6 +62,8 @@
       method="post" 
       class="subsection-content"
       >
+      {% if workout.worked_out_or_nah %}
+      <p></p>
         {% csrf_token %}
         {{ did_workout_form.as_p }}
         <button type="submit" class="btn submit">Add Workout Date</button>
@@ -82,7 +84,7 @@
         </tbody>
       </table>
     {% else %}
-    <p class="subsection-content">{{user.name}} has never worked out {{workout.muscle_grp}}</p>
+    <p class="subsection-content">{{user.username}} has never worked out {{workout.muscle_grp}}. Do you even lift, {{user.username}}?</p>
     {% endif %}
     </section>
   </div>
