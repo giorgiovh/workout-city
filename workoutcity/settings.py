@@ -9,12 +9,12 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+from pathlib import Path
 import environ
 env = environ.Env()
 environ.Env.read_env()
 # import django_on_heroku django_on_heroku.settings(locals())
 
-from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,8 +126,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Specify where decorators and mixins redirect
+LOGIN_URL = 'home'
+
+# This variable will redirect successful logins
+LOGIN_REDIRECT_URL = 'workouts_index'
+
+# Redirects on successful logout
+LOGOUT_REDIRECT_URL = 'home'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
