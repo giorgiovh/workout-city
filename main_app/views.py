@@ -3,7 +3,14 @@ from .models import Workout
 from django.contrib.auth.views import LoginView
 # Create your views here.
 
-
+def signup(request):
+    error_message = ''
+    if request.method == 'POST'
+    #Here we create a 'user' form object including data from the browser
+    
+    
+    
+    
 class Home(LoginView):
     template_name = 'home.html'
 
