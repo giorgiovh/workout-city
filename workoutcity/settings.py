@@ -129,6 +129,10 @@ STATIC_URL = '/static/'
 # This variable will redirect successful logins
 LOGIN_REDIRECT_URL = 'workouts_index'
 
+# Redirects on successful logout
+LOGOUT_REDIRECT_URL = 'home'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
