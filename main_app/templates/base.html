@@ -20,9 +20,11 @@
         </div>
         <nav>
             <ul>
+              {% if user.is_authenticated %}
                 <li><a href="/workouts">All Workouts</a></li>
                 <li><a href="/about">About Workout City</a></li>
-
+                <li><a href="/logout">Logout</a></li>
+              {% else %}
             </ul>
         </nav>
     </header>
