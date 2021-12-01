@@ -22,14 +22,16 @@
             <ul>
               {% if user.is_authenticated %}
                 <li><a href="{% url 'workouts_index' %}">All Workouts</a></li>
+                <li><a href="{% url 'exercises_index' %}">All Exercises</a></li>
                 <li><a href="{% url 'workouts_create' %}">Add a Workout</a></li>
+                <li><a href="{% url 'exercises_create' %}">Add an Exercise</a></li>
                 <li><a href="{% url 'about' %}">About Workout City</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
               {% else %}
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'home' %}">Login</a></li>
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                {% endif %}
+              {% endif %}
             </ul>
         </nav>
     </header>

@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
-from .models import Workout
+from .models import Workout, Exercise
 from .forms import DidWorkoutForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
@@ -24,13 +24,30 @@ class WorkoutCreate(CreateView):
 
 class WorkoutUpdate(UpdateView):
     model = Workout
-    fields = ['breed', 'description', 'age']
+    fields = ['muscle_grp', 'day_of_week', 'description']
 
 
 class WorkoutDelete(DeleteView):
     model = Workout
     success_url = '/workouts/'
 
+class ExerciseCreate(CreateView):
+    model = Exercise
+    fields = '__all__'
+
+class ExerciseList(ListView):
+    model = Exercise
+
+class ExerciseDetail(DetailView):
+    model = Exercise
+
+class ExerciseUpdate(UpdateView):
+    model = Exercise
+    fields = '__all__'
+
+class ExerciseDelete(DeleteView):
+    model = Exercise
+    success_url = '/exercises/'
 
 def signup(request):
     error_message = ''
@@ -57,12 +74,6 @@ def about(request):
 def workouts_index(request):
     workouts = Workout.objects.filter(user=request.user)
     return render(request, 'workouts/index.html', {'workouts': workouts})
-
-# @login_required
-# class WorkoutList(ListView):
-#     model = Workout
-#     template_name = 'workouts/index.html'
-
 
 @login_required
 def workouts_detail(request, workout_id):
