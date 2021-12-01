@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 # Create your models here.
 
+DIDYOU =  (
+    ('Y', 'Yes'),
+    ('N', 'No')
+)
 
 class Workout(models.Model):
     muscle_grp = models.CharField(max_length=50)
@@ -13,10 +17,7 @@ class Workout(models.Model):
 class DidWorkout(models.Model):
     date = models.DateField()
     did_workout = models.CharField(max_length=1)
-    DIDYOU =  (
-        ('Y', 'Yes'),
-        ('N', 'No')
-    )
+
     def __str__(self):
         return self.muscle_grp
 
