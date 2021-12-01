@@ -67,6 +67,7 @@
         <button type="submit" class="btn submit">Add Workout Date</button>
       </form>
     <h3>Past Workouts</h3>
+    {% if workout.didworkout_set.all.count %}
       <table>
         <thead>
           <tr><th>Date</th><th>Did you Workout?</th></tr>
@@ -80,7 +81,8 @@
           {% endfor %}
         </tbody>
       </table>
-
+    {% else %}
+    <p class="subsection-content">{{user.name}} has never worked out {{workout.muscle_grp}}</p>
     </section>
   </div>
 
