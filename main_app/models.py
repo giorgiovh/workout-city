@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from datetime import date
 # Create your models here.
 
 DIDYOU =  (
@@ -19,6 +20,9 @@ class Workout(models.Model):
 
     def get_absolute_url(self):
         return reverse("workouts_detail", kwargs={'workout_id': self.id})
+    
+    def worked_out_or_nah(self):
+        return self.didworkout_set.filter(date=date.today()).count() >= len(DIDYOU)
 
 class DidWorkout(models.Model):
     date = models.DateField('Workout date')
@@ -31,5 +35,8 @@ class DidWorkout(models.Model):
 
     def __str__(self):
         return f"{self.get_did_workout_display()} on {self.date}"
+    
+    class Meta:
+        ordering = ['-date']
         
     

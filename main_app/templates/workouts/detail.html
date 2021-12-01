@@ -58,14 +58,21 @@
 
       <h3>Add a Workout Date</h3>
       <form
+      action={% url 'add_didworkout' workout.id %}
       method="post" 
       class="subsection-content"
       >
+      {% if workout.worked_out_or_nah %}
+      <p class="workedout">{{workout.muscle_grp}} has been pumped up today!</p>
+      {% else %}
+      <p class="notworkedout">{{workout.muscle_grp}} is looking kinda soft today!</p>
+      {% endif %}
         {% csrf_token %}
         {{ did_workout_form.as_p }}
         <button type="submit" class="btn submit">Add Workout Date</button>
       </form>
     <h3>Past Workouts</h3>
+    {% if workout.didworkout_set.all.count %}
       <table>
         <thead>
           <tr><th>Date</th><th>Did you Workout?</th></tr>
@@ -79,7 +86,9 @@
           {% endfor %}
         </tbody>
       </table>
-
+    {% else %}
+    <p class="subsection-content">{{user.username}} has never worked out {{workout.muscle_grp}}. Do you even lift, {{user.username}}?</p>
+    {% endif %}
     </section>
   </div>
 
