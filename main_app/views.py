@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView
 from .models import Workout
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -42,6 +43,10 @@ def about(request):
 class WorkoutList(ListView):
     model = Workout
     template_name = 'workouts/index.html'
+
+class WorkoutCreate(CreateView):
+    model = Workout
+    fields = ['muscle_grp', 'day_of_week', 'description']
 
 @login_required
 def workouts_detail(request, workout_id):
