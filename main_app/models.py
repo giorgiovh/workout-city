@@ -10,6 +10,10 @@ class Exercise(models.Model):
     description = models.CharField(max_length=100)
     sets = models.IntegerField()
     reps = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+    
     
 
 DIDYOU =  (
