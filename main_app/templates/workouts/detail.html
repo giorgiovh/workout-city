@@ -141,6 +141,12 @@
       {% endif %}
     </div>
   </section>
+  <div class="card-action">
+    <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
+        {% csrf_token %}
+      <button type="submit" class="btn">Add</button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}
