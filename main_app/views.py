@@ -31,6 +31,9 @@ class WorkoutDelete(DeleteView):
     model = Workout
     success_url = '/workouts/'
 
+class ExerciseCreate(CreateView):
+    model = Exercise
+    fields = '__all__'
 
 def signup(request):
     error_message = ''
