@@ -78,6 +78,7 @@ def workouts_index(request):
 @login_required
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
+    exercises_workout_doesnt_have = Exercise.objects.exclude(id_in = workout.exercises.all().values_list('id'))
     did_workout_form = DidWorkoutForm()
     return render(request, 'workouts/detail.html', {'workout': workout, 'did_workout_form': did_workout_form})
 
