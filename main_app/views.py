@@ -34,15 +34,15 @@ class Home(LoginView):
 def about(request):
     return render(request, 'about.html')
 
-# @login_required
-# def workouts_index(request):
-#     workouts = Workout.objects.filter(user=request.user)
-#     return render(request, 'workouts/index.html', {'workouts': workouts})
-
 @login_required
-class WorkoutList(ListView):
-    model = Workout
-    template_name = 'workouts/index.html'
+def workouts_index(request):
+    workouts = Workout.objects.filter(user=request.user)
+    return render(request, 'workouts/index.html', {'workouts': workouts})
+
+# @login_required
+# class WorkoutList(ListView):
+#     model = Workout
+#     template_name = 'workouts/index.html'
 
 class WorkoutCreate(CreateView):
     model = Workout
