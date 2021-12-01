@@ -21,10 +21,10 @@
 
 <section class="workout-container">
   <div class="workout-img">
-    <img 
+    {% comment %} <img 
       src="{% static 'images/' %}" 
       alt=""
-    >
+    > {% endcomment %}
   </div>
   <div class="workout-details">
     <h1>{{ workout.muscle_grp }}</h1>
@@ -41,7 +41,7 @@
     <section class="workouts">
       <div class="subsection-title">
         <h2>Workouts</h2>
-        <img 
+        {% comment %} <img 
           src="{% static 'images/' %}" 
           alt=""
         />
@@ -52,7 +52,7 @@
         <img 
           src="{% static 'images/' %}" 
           alt=""
-        />
+        /> {% endcomment %}
       </div>
 
       <h3>Add a Workout Date</h3>
