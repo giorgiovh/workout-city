@@ -41,6 +41,14 @@ class ExerciseList(ListView):
 class ExerciseDetail(DetailView):
     model = Exercise
 
+class ExerciseUpdate(UpdateView):
+    model = Exercise
+    fields = '__all__'
+
+class ExerciseDelete(DeleteView):
+    model = Exercise
+    success_url = '/exercises/'
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':
