@@ -13,13 +13,16 @@
 <section class="card-container">
     {% for workout in workouts %}
         <div class="card">
-            <div class="card-content">
-                <div class="card-img-container">
-                    <img class="generic-workout" src="{% static 'images/barbell-dl gray.jpg' %}" alt="">
+            <a href="/workouts/{{ workout.id }}">
+                <div class="card-content">
+                    <div class="card-img-container">
+                        <img class="generic-workout" src="{% static 'images/barbell-dl gray.jpg' %}" alt="">
+                    </div>
+                    <h2 class="card-title">{{ workout.day_of_week}}</h2>
+                    <p>{{ workout.muscle_grp }}</p>
+                    <p><small>{{ workout.description }}</small></p>
                 </div>
-                <h2 class="card-title">{{ workout.day_of_week}}</h2>
-                <p>{{ workout.muscle_grp }}</p>
-            </div>
+            </a>
         </div>
     {% endfor %}
 </section>
