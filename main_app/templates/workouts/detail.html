@@ -63,7 +63,10 @@
       class="subsection-content"
       >
       {% if workout.worked_out_or_nah %}
-      <p></p>
+      <p class="workedout">{{workout.muscle_grp}} has been pumped up today!</p>
+      {% else %}
+      <p class="notworkedout">{{workout.muscle_grp}} is looking kinda soft today!</p>
+      {% endif %}
         {% csrf_token %}
         {{ did_workout_form.as_p }}
         <button type="submit" class="btn submit">Add Workout Date</button>
