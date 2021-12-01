@@ -58,12 +58,6 @@ def workouts_index(request):
     workouts = Workout.objects.filter(user=request.user)
     return render(request, 'workouts/index.html', {'workouts': workouts})
 
-# @login_required
-# class WorkoutList(ListView):
-#     model = Workout
-#     template_name = 'workouts/index.html'
-
-
 @login_required
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
