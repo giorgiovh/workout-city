@@ -21,7 +21,7 @@ class Workout(models.Model):
         return reverse("workouts_detail", kwargs={'workout_id': self.id})
 
 class DidWorkout(models.Model):
-    date = models.DateField()
+    date = models.DateField('Workout date')
     did_workout = models.CharField(
         max_length=1,
         choices=DIDYOU,
