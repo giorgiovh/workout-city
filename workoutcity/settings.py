@@ -126,6 +126,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Specify where decorators and mixins redirect
+LOGIN_URL = 'home'
+
 # This variable will redirect successful logins
 LOGIN_REDIRECT_URL = 'workouts_index'
 
