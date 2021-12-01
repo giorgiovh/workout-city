@@ -75,7 +75,8 @@ def add_didworkout(request, workout_id):
     form = DidWorkoutForm(request.POST)
     # validate form
     if form.is_valid():
-        #don't save form until workout_id is assigned
+        # don't save form until workout_id is assigned
         new_didworkout = form.save(commit=False)
         new_didworkout.workout_id = workout_id
         new_didworkout.save()
+    return redirect('workouts_detail', workout_id=workout_id)
