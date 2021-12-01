@@ -16,7 +16,11 @@ class Workout(models.Model):
 
 class DidWorkout(models.Model):
     date = models.DateField()
-    did_workout = models.CharField(max_length=1)
+    did_workout = models.CharField(
+        max_length=1,
+        choices=DIDYOU,
+        default=DIDYOU[0][0]
+        )
 
     def __str__(self):
         return self.muscle_grp
