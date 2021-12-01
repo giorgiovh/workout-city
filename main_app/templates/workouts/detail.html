@@ -46,6 +46,17 @@
           alt=""
         />
       </div>
+
+      <h3>Add a Workout Date</h3>
+      <form
+      method="post" 
+      class="subsection-content"
+      >
+        {% csrf_token %}
+        {{ did_workout_form.as_p }}
+        <button type="submit" class="btn submit">Add Workout Date</button>
+      </form>
+    <h3>Past Workouts</h3>
       <table>
         <thead>
           <tr><th>Date</th><th>Did you Workout?</th></tr>
@@ -59,6 +70,7 @@
           {% endfor %}
         </tbody>
       </table>
+
     </section>
   </div>
 
