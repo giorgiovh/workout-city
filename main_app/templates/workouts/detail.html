@@ -16,6 +16,7 @@
   href="{% static 'css/workout-detail.css' %}"
 />
 <script defer src="{% static 'js/workout-detail.js' %}"></script>
+<script defer src="{% static 'js/detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -41,7 +42,8 @@
 <div class="workouts-exercise-container">
     <section class="workouts">
       <div class="subsection-title">
-        <h2>Workouts</h2>
+        <h2>Monthly Workout Tracker</h2>
+        <h4 class="progress-msg">Get your workouts in!</h4>
         {% comment %} <img 
           src="{% static 'images/' %}" 
           alt=""
@@ -56,11 +58,14 @@
         /> {% endcomment %}
       </div>
 
+
+      <img class="kamehameha" src="{% static 'images/kamehameha.png' %}" alt="">
+
       <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
       </div>
 
-      <h3>Add a Workout Date</h3>
+      <h3>Log Workout</h3>
       <form
       action={% url 'add_didworkout' workout.id %}
       method="post" 
@@ -73,7 +78,7 @@
       {% endif %}
         {% csrf_token %}
         {{ did_workout_form.as_p }}
-        <button type="submit" class="btn submit">Add Workout Date</button>
+        <button type="submit" class="btn submit">Log</button>
       </form>
     <h3>Past Workouts</h3>
     {% if workout.didworkout_set.all.count %}
@@ -111,7 +116,7 @@
                 class="color-block">
               </div>
               <a href="{% url 'exercises_detail' exercise.id %}">
-                <p>A {{ exercise.name }}</p>
+                <p>{{ exercise.name }}</p>
               </a>
             </div>
           {% endfor %}
