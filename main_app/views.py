@@ -73,40 +73,40 @@ def assoc_exercise(request, workout_id, exercise_id):
     return redirect('workouts_detail', workout_id=workout_id)
 
 
-class WorkoutCreate(CreateView):
+class WorkoutCreate(LoginRequiredMixin, CreateView):
     model = Workout
     fields = ['muscle_grp', 'day_of_week', 'description']
     success_url = '/workouts/'
 
 
-class WorkoutUpdate(UpdateView):
+class WorkoutUpdate(LoginRequiredMixin, UpdateView):
     model = Workout
     fields = ['muscle_grp', 'day_of_week', 'description']
 
 
-class WorkoutDelete(DeleteView):
+class WorkoutDelete(LoginRequiredMixin, DeleteView):
     model = Workout
     success_url = '/workouts/'
 
 
-class ExerciseCreate(CreateView):
+class ExerciseCreate(LoginRequiredMixin, CreateView):
     model = Exercise
     fields = '__all__'
 
 
-class ExerciseList(ListView):
+class ExerciseList(LoginRequiredMixin, ListView):
     model = Exercise
 
 
-class ExerciseDetail(DetailView):
+class ExerciseDetail(LoginRequiredMixin, DetailView):
     model = Exercise
 
 
-class ExerciseUpdate(UpdateView):
+class ExerciseUpdate(LoginRequiredMixin, UpdateView):
     model = Exercise
     fields = '__all__'
 
 
-class ExerciseDelete(DeleteView):
+class ExerciseDelete(LoginRequiredMixin, DeleteView):
     model = Exercise
     success_url = '/exercises/'
