@@ -10,5 +10,5 @@ addWorkoutDateBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
     progressNumber++;
     console.log(progressNumber);
-    progressBar.setAttribute("style", "width: 5%")
+    progressBar.setAttribute("style", `width: ${progressNumber}%`)
 })
