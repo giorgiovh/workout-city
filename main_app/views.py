@@ -129,3 +129,7 @@ class NutritionDetail(LoginRequiredMixin, DetailView):
 class NutritionUpdate(LoginRequiredMixin, UpdateView):
   model = Nutrition
   fields = ['name_of_food']
+
+class NutritionDelete(LoginRequiredMixin, DeleteView):
+  model = Nutrition
+  success_url = '/nutritions/'
