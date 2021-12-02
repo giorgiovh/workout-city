@@ -55,4 +55,15 @@ class DidWorkout(models.Model):
     class Meta:
         ordering = ['-date']
         
+class Nutrition(models.Model):
+    name_of_food = models.CharField(max_length=50)
+    calories = models.CharField(max_length=50)
+    day = models.CharField(max_length=50)
+    meal = models.CharField(max_length=50)
+    user = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name_of_food
     
+    def get_absolute_url(self):
+        return reverse("nutritions_detail", kwargs={"pk": self.id})
