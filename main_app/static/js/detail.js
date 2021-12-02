@@ -1,14 +1,13 @@
 const progressBar = document.querySelector('.progress-bar')
 const addWorkoutDateBtn = document.querySelector('.btn.submit')
-console.log(progressBar);
-console.log(addWorkoutDateBtn);
-console.log('hello');
+const didWorkoutInpt = document.querySelector('#id_did_workout')
 
 let progressNumber = 0
 
 addWorkoutDateBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
-    progressNumber++;
-    console.log(progressNumber);
-    progressBar.setAttribute("style", `width: ${progressNumber}%`)
+    if (didWorkoutInpt.value === "Y") {        
+        progressNumber+= 25;
+        progressBar.setAttribute("style", `width: ${progressNumber}%`)
+    }
 })
