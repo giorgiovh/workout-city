@@ -19,21 +19,23 @@
             <img src="" alt="">
             </a>
         </div>
-        <nav>
-            <ul>
-              {% if user.is_authenticated %}
-                <li><a href="{% url 'workouts_index' %}">All Workouts</a></li>
-                <li><a href="{% url 'exercises_index' %}">All Exercises</a></li>
-                <li><a href="{% url 'workouts_create' %}">Add a Workout</a></li>
-                <li><a href="{% url 'exercises_create' %}">Add an Exercise</a></li>
-                <li><a href="{% url 'about' %}">About Workout City</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-              {% else %}
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'home' %}">Login</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-              {% endif %}
-            </ul>
+        <nav class="navbar fixed-top navbar-expand-xl navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
+          
+              <ul>
+                  {% if user.is_authenticated %}
+                    <li><a href="{% url 'workouts_index' %}">All Workouts</a></li>
+                    <li><a href="{% url 'exercises_index' %}">All Exercises</a></li>
+                    <li><a href="{% url 'workouts_create' %}">Add a Workout</a></li>
+                    <li><a href="{% url 'exercises_create' %}">Add an Exercise</a></li>
+                    <li><a href="{% url 'about' %}">About Workout City</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                  {% else %}
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'home' %}">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                  {% endif %}
+                </ul>
+          </div>  
         </nav>
     </header>
     <main>
