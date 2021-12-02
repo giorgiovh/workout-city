@@ -61,3 +61,7 @@ class Nutrition(models.model):
     day = models.CharField(max_length=50)
     meal = models.CharField(max_length=50)
     user = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name_of_food
+    
