@@ -115,3 +115,7 @@ class ExerciseDelete(LoginRequiredMixin, DeleteView):
 class DidWorkoutUpdate(LoginRequiredMixin, UpdateView):
     model = DidWorkout
     fields = ['date', 'did_workout']
+
+class NutritionCreate(CreateView):
+    model = Nutrition
+    fields = '__all__'
