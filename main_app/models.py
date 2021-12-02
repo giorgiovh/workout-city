@@ -36,7 +36,7 @@ class Workout(models.Model):
         return reverse("workouts_detail", kwargs={'workout_id': self.id})
     
     def worked_out_or_nah(self):
-        return self.didworkout_set.filter(date=date.today()).count() >= len(DIDYOU)
+        return self.didworkout_set.filter(date=date.today()).count() >= 1
 
 class DidWorkout(models.Model):
     date = models.DateField('Workout date')
