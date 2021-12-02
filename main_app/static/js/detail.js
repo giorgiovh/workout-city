@@ -6,5 +6,6 @@ console.log('hello');
 
 
 addWorkoutDateBtn.addEventListener("click", (evt) => {
-    console.log('clicked');
+    evt.preventDefault();
+    progressBar.setAttribute("style", "width: 5%")
 })
