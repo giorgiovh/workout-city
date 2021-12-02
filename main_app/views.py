@@ -120,8 +120,12 @@ class NutritionCreate(LoginRequiredMixin, CreateView):
     model = Nutrition
     fields = ['name_of_food', 'calories', 'day', 'meal']
 
-class NutritionList(ListView):
+class NutritionList(LoginRequiredMixin, ListView):
   model = Nutrition
 
-class NutritionDetail(DetailView):
+class NutritionDetail(LoginRequiredMixin, DetailView):
   model = Nutrition
+
+class NutritionUpdate(LoginRequiredMixin, UpdateView):
+  model = Nutrition
+  fields = ['name_of_food']
