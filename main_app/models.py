@@ -65,3 +65,6 @@ class Nutrition(models.model):
     def __str__(self):
         return self.name_of_food
     
+    def get_absolute_url(self):
+        return reverse("nutritions_detail", kwargs={"pk": self.id})
+    
