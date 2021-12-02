@@ -13,18 +13,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
 
-class Home(LoginView):
-    template_name = 'home.html'
-
-
-class WorkoutCreate(CreateView):
-    model = Workout
-    fields = ['muscle_grp', 'day_of_week', 'description']
-    success_url = '/workouts/'
-
-
-
-
 def signup(request):
     error_message = ''
     if request.method == 'POST':
@@ -42,6 +30,16 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 
+class Home(LoginView):
+    template_name = 'home.html'
+
+
+class WorkoutCreate(CreateView):
+    model = Workout
+    fields = ['muscle_grp', 'day_of_week', 'description']
+    success_url = '/workouts/'
+
+
 def about(request):
     return render(request, 'about.html')
 
@@ -51,15 +49,17 @@ def workouts_index(request):
     workouts = Workout.objects.filter(user=request.user)
     return render(request, 'workouts/index.html', {'workouts': workouts})
 
+
 @login_required
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
-    exercises_workout_doesnt_have = Exercise.objects.exclude(id__in = workout.exercises.all().values_list('id'))
+    exercises_workout_doesnt_have = Exercise.objects.exclude(
+        id__in=workout.exercises.all().values_list('id'))
     did_workout_form = DidWorkoutForm()
     return render(request, 'workouts/detail.html', {
-    'workout': workout, 
-    'did_workout_form': did_workout_form,
-    'exercises': exercises_workout_doesnt_have
+        'workout': workout,
+        'did_workout_form': did_workout_form,
+        'exercises': exercises_workout_doesnt_have
     })
 
 
@@ -73,9 +73,10 @@ def add_didworkout(request, workout_id):
         new_didworkout.save()
     return redirect('workouts_detail', workout_id=workout_id)
 
+
 def assoc_exercise(request, workout_id, exercise_id):
-  Workout.objects.get(id=workout_id).exercises.add(exercise_id)
-  return redirect('workouts_detail', workout_id=workout_id)
+    Workout.objects.get(id=workout_id).exercises.add(exercise_id)
+    return redirect('workouts_detail', workout_id=workout_id)
 
 
 class WorkoutUpdate(UpdateView):
