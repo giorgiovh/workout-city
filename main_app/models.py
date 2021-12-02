@@ -55,4 +55,9 @@ class DidWorkout(models.Model):
     class Meta:
         ordering = ['-date']
         
-    
+class Nutrition(models.model):
+    name_of_food = models.CharField(max_length=50)
+    calories = models.CharField(max_length=50)
+    day = models.CharField(max_length=50)
+    meal = models.CharField(max_length=50)
+    user = models.CharField(max_length=50)
