@@ -34,14 +34,14 @@ class Home(LoginView):
     template_name = 'home.html'
 
 
+def about(request):
+    return render(request, 'about.html')
+
+
 class WorkoutCreate(CreateView):
     model = Workout
     fields = ['muscle_grp', 'day_of_week', 'description']
     success_url = '/workouts/'
-
-
-def about(request):
-    return render(request, 'about.html')
 
 
 @login_required
