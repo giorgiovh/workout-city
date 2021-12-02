@@ -4,7 +4,7 @@
 
 ## Getting started
 
-[Click here to visit Anime City!](https://workoutcity.herokuapp.com/)
+[Click here to visit Workout City!](https://workoutcity.herokuapp.com/)
 
 ***
 
