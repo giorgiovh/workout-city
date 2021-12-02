@@ -5,6 +5,7 @@ from .forms import DidWorkoutForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -22,32 +23,7 @@ class WorkoutCreate(CreateView):
     success_url = '/workouts/'
 
 
-class WorkoutUpdate(UpdateView):
-    model = Workout
-    fields = ['muscle_grp', 'day_of_week', 'description']
 
-
-class WorkoutDelete(DeleteView):
-    model = Workout
-    success_url = '/workouts/'
-
-class ExerciseCreate(CreateView):
-    model = Exercise
-    fields = '__all__'
-
-class ExerciseList(ListView):
-    model = Exercise
-
-class ExerciseDetail(DetailView):
-    model = Exercise
-
-class ExerciseUpdate(UpdateView):
-    model = Exercise
-    fields = '__all__'
-
-class ExerciseDelete(DeleteView):
-    model = Exercise
-    success_url = '/exercises/'
 
 def signup(request):
     error_message = ''
@@ -100,3 +76,36 @@ def add_didworkout(request, workout_id):
 def assoc_exercise(request, workout_id, exercise_id):
   Workout.objects.get(id=workout_id).exercises.add(exercise_id)
   return redirect('workouts_detail', workout_id=workout_id)
+
+
+class WorkoutUpdate(UpdateView):
+    model = Workout
+    fields = ['muscle_grp', 'day_of_week', 'description']
+
+
+class WorkoutDelete(DeleteView):
+    model = Workout
+    success_url = '/workouts/'
+
+
+class ExerciseCreate(CreateView):
+    model = Exercise
+    fields = '__all__'
+
+
+class ExerciseList(ListView):
+    model = Exercise
+
+
+class ExerciseDetail(DetailView):
+    model = Exercise
+
+
+class ExerciseUpdate(UpdateView):
+    model = Exercise
+    fields = '__all__'
+
+
+class ExerciseDelete(DeleteView):
+    model = Exercise
+    success_url = '/exercises/'
