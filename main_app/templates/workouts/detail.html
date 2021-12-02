@@ -132,7 +132,7 @@
             <a href="{% url 'exercises_detail' exercise.id %}">
               <p>A {{ exercise.color }} {{ exercise.name }}</p>
             </a>
-            <form action="" method="post">
+            <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
               {% csrf_token %}
               <button type="submit" class="btn submit">Add Exercise</button>
             </form>
@@ -145,12 +145,6 @@
       {% endif %}
     </div>
   </section>
-  <div class="card-action">
-    {% comment %} <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
-        {% csrf_token %}
-      <button type="submit" class="btn">Add</button>
-    </form> {% endcomment %}
-  </div>
 </div>
 
 {% endblock %}
