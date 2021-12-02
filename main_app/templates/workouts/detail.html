@@ -97,7 +97,7 @@
         <img src="{% static 'images/' %}" alt="" />
         <img src="{% static 'images/' %}" alt="" /> {% endcomment %}
       </div>
-      <h3>{{ workout.name }}'s exercises</h3>
+      <h3>{{ workout.muscle_grp }}'s exercises</h3>
       <div class="subsection-content">
         {% if workout.exercises.count %}
           {% for exercise in workout.exercises.all %}
@@ -142,10 +142,10 @@
     </div>
   </section>
   <div class="card-action">
-    <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
+    {% comment %} <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
         {% csrf_token %}
       <button type="submit" class="btn">Add</button>
-    </form>
+    </form> {% endcomment %}
   </div>
 </div>
 
