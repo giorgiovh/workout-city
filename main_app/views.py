@@ -38,12 +38,6 @@ def about(request):
     return render(request, 'about.html')
 
 
-class WorkoutCreate(CreateView):
-    model = Workout
-    fields = ['muscle_grp', 'day_of_week', 'description']
-    success_url = '/workouts/'
-
-
 @login_required
 def workouts_index(request):
     workouts = Workout.objects.filter(user=request.user)
@@ -77,6 +71,12 @@ def add_didworkout(request, workout_id):
 def assoc_exercise(request, workout_id, exercise_id):
     Workout.objects.get(id=workout_id).exercises.add(exercise_id)
     return redirect('workouts_detail', workout_id=workout_id)
+
+
+class WorkoutCreate(CreateView):
+    model = Workout
+    fields = ['muscle_grp', 'day_of_week', 'description']
+    success_url = '/workouts/'
 
 
 class WorkoutUpdate(UpdateView):
