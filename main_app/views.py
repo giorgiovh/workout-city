@@ -5,49 +5,13 @@ from .forms import DidWorkoutForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
 
-
-class Home(LoginView):
-    template_name = 'home.html'
-
-
-class WorkoutCreate(CreateView):
-    model = Workout
-    fields = ['muscle_grp', 'day_of_week', 'description']
-    success_url = '/workouts/'
-
-
-class WorkoutUpdate(UpdateView):
-    model = Workout
-    fields = ['muscle_grp', 'day_of_week', 'description']
-
-
-class WorkoutDelete(DeleteView):
-    model = Workout
-    success_url = '/workouts/'
-
-class ExerciseCreate(CreateView):
-    model = Exercise
-    fields = '__all__'
-
-class ExerciseList(ListView):
-    model = Exercise
-
-class ExerciseDetail(DetailView):
-    model = Exercise
-
-class ExerciseUpdate(UpdateView):
-    model = Exercise
-    fields = '__all__'
-
-class ExerciseDelete(DeleteView):
-    model = Exercise
-    success_url = '/exercises/'
 
 def signup(request):
     error_message = ''
@@ -66,6 +30,10 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 
+class Home(LoginView):
+    template_name = 'home.html'
+
+
 def about(request):
     return render(request, 'about.html')
 
@@ -75,15 +43,17 @@ def workouts_index(request):
     workouts = Workout.objects.filter(user=request.user)
     return render(request, 'workouts/index.html', {'workouts': workouts})
 
+
 @login_required
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
-    exercises_workout_doesnt_have = Exercise.objects.exclude(id__in = workout.exercises.all().values_list('id'))
+    exercises_workout_doesnt_have = Exercise.objects.exclude(
+        id__in=workout.exercises.all().values_list('id'))
     did_workout_form = DidWorkoutForm()
     return render(request, 'workouts/detail.html', {
-    'workout': workout, 
-    'did_workout_form': did_workout_form,
-    'exercises': exercises_workout_doesnt_have
+        'workout': workout,
+        'did_workout_form': did_workout_form,
+        'exercises': exercises_workout_doesnt_have
     })
 
 
@@ -97,6 +67,46 @@ def add_didworkout(request, workout_id):
         new_didworkout.save()
     return redirect('workouts_detail', workout_id=workout_id)
 
+
 def assoc_exercise(request, workout_id, exercise_id):
-  Workout.objects.get(id=workout_id).exercises.add(exercise_id)
-  return redirect('workouts_detail', workout_id=workout_id)
+    Workout.objects.get(id=workout_id).exercises.add(exercise_id)
+    return redirect('workouts_detail', workout_id=workout_id)
+
+
+class WorkoutCreate(LoginRequiredMixin, CreateView):
+    model = Workout
+    fields = ['muscle_grp', 'day_of_week', 'description']
+    success_url = '/workouts/'
+
+
+class WorkoutUpdate(LoginRequiredMixin, UpdateView):
+    model = Workout
+    fields = ['muscle_grp', 'day_of_week', 'description']
+
+
+class WorkoutDelete(LoginRequiredMixin, DeleteView):
+    model = Workout
+    success_url = '/workouts/'
+
+
+class ExerciseCreate(LoginRequiredMixin, CreateView):
+    model = Exercise
+    fields = '__all__'
+
+
+class ExerciseList(LoginRequiredMixin, ListView):
+    model = Exercise
+
+
+class ExerciseDetail(LoginRequiredMixin, DetailView):
+    model = Exercise
+
+
+class ExerciseUpdate(LoginRequiredMixin, UpdateView):
+    model = Exercise
+    fields = '__all__'
+
+
+class ExerciseDelete(LoginRequiredMixin, DeleteView):
+    model = Exercise
+    success_url = '/exercises/'
