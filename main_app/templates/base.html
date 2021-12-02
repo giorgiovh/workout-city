@@ -19,8 +19,7 @@
             <img src="" alt="">
             </a>
         </div>
-        <nav class="navbar fixed-top navbar-expand-xl navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
-          
+        <nav>
               <ul>
                   {% if user.is_authenticated %}
                     <li><a href="{% url 'workouts_index' %}">All Workouts</a></li>
@@ -34,8 +33,7 @@
                     <li><a href="{% url 'home' %}">Login</a></li>
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
                   {% endif %}
-                </ul>
-          </div>  
+                </ul>  
         </nav>
     </header>
     <main>
