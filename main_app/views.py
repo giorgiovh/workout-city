@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
-from .models import Workout, Exercise, DidWorkout
+from .models import Workout, Exercise, DidWorkout, Nutrition
 from .forms import DidWorkoutForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -115,3 +115,21 @@ class ExerciseDelete(LoginRequiredMixin, DeleteView):
 class DidWorkoutUpdate(LoginRequiredMixin, UpdateView):
     model = DidWorkout
     fields = ['date', 'did_workout']
+
+class NutritionCreate(LoginRequiredMixin, CreateView):
+    model = Nutrition
+    fields = ['name_of_food', 'calories', 'day', 'meal']
+
+class NutritionList(LoginRequiredMixin, ListView):
+  model = Nutrition
+
+class NutritionDetail(LoginRequiredMixin, DetailView):
+  model = Nutrition
+
+class NutritionUpdate(LoginRequiredMixin, UpdateView):
+  model = Nutrition
+  fields = ['name_of_food', 'calories', 'day', 'meal']
+
+class NutritionDelete(LoginRequiredMixin, DeleteView):
+  model = Nutrition
+  success_url = '/nutritions/'
