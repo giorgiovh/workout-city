@@ -128,7 +128,7 @@ class NutritionDetail(LoginRequiredMixin, DetailView):
 
 class NutritionUpdate(LoginRequiredMixin, UpdateView):
   model = Nutrition
-  fields = ['name_of_food']
+  fields = ['name_of_food', 'calories', 'day', 'meal']
 
 class NutritionDelete(LoginRequiredMixin, DeleteView):
   model = Nutrition
