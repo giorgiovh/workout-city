@@ -10,17 +10,17 @@
     <h1>Workouts</h1>
 </section>
 
-<section class="card-container">
+<section class="honeycomb">
     {% for workout in workouts %}
-        <div class="card">
-            <a href="{% url 'workouts_detail' workout.id %}">
+        <div class="honeycomb-cell">
+            <a style="text-decoration:none" href="{% url 'workouts_detail' workout.id %}">
                 <div class="card-content">
                     <div class="card-img-container">
-                        <img class="generic-workout" src="{% static 'images/barbell-dl gray.jpg' %}" alt="">
+                        <img class="honeycomb-cell__image" src="{% static 'images/barbell-dl gray.jpg' %}" alt="">
                     </div>
-                    <h2 class="card-title">{{ workout.day_of_week}}</h2>
-                    <p>{{ workout.muscle_grp }}</p>
-                    <p><small>{{ workout.description }}</small></p>
+                    <h2 class="honeycomb-cell__title">{{ workout.day_of_week}}</h2>
+                    <p class="honeycomb-cell__para"><small>{{ workout.muscle_grp }}</small></p>
+                    <p class="honeycomb-cell__para"><small>{{ workout.description }}</small></p>
                 </div>
             </a>
         </div>
