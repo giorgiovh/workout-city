@@ -79,13 +79,14 @@
     {% if workout.didworkout_set.all.count %}
       <table>
         <thead>
-          <tr><th>Date</th><th>Did you Workout?</th></tr>
+          <tr><th>Date</th><th>Did you Workout?</th><th></th></tr>
         </thead>
         <tbody>
           {% for didworkout in workout.didworkout_set.all %}
             <tr>
               <td>{{didworkout.date}}</td>
               <td>{{didworkout.get_did_workout_display}}</td>
+              <td><a href="">Edit</a></td>
             </tr>
           {% endfor %}
         </tbody>
