@@ -119,3 +119,9 @@ class DidWorkoutUpdate(LoginRequiredMixin, UpdateView):
 class NutritionCreate(LoginRequiredMixin, CreateView):
     model = Nutrition
     fields = ['name_of_food', 'calories', 'day', 'meal']
+
+class NutritionList(ListView):
+  model = Nutrition
+
+class NutritionDetail(DetailView):
+  model = Nutrition
