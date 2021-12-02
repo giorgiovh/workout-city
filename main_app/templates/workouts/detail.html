@@ -103,6 +103,24 @@
     {% comment %} We'll display available exercises here {% endcomment %}
     {% if exercises.count %}
     {% for exercise in exercises.all %}
+    
+    {% comment %} <div class="col-sm-4">
+      <div class="card">
+        <div class="image">
+          <img src="http://loremflickr.com/320/150?random=4" />
+        </div>
+        <div class="card-inner">
+          <div class="header">
+            <h2>Title</h2>
+            <h3>Sub-Head</h2>
+          </div>
+          <div class="content">
+            <p>Content area</p>
+          </div>
+        </div>
+      </div>
+    </div> {% endcomment %}
+    
     <div class="exercise-container">
       <div class="color-block" style="background-color: {{ exercise.color }}"></div>
       <a href="{% url 'exercises_detail' exercise.id %}">
