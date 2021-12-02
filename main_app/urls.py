@@ -21,4 +21,5 @@ urlpatterns = [
     path('nutritions/create/', views.NutritionCreate.as_view(), name='nutritions_create'),
     path('nutritions/<int:pk>/', views.NutritionDetail.as_view(), name='nutritions_detail'),
     path('nutritions/', views.NutritionList.as_view(), name='nutritions_index'),
+    path('nutritions/<int:pk>/update/', views.NutritionUpdate.as_view(), name='nutritions_update'),
 ]
