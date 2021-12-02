@@ -6,19 +6,21 @@
 {% endblock head %}
 
 {% block content %}
-<div class="page-header">
-{% if object %}
-    <h1>Edit {{object.name}}</h1>
+<div class="page-header text-center">
+  {% if object %}
+  <h1>Edit {{object.name}}</h1>
   {% else %}
-    <h1>Add a Workout</h1>
+  <h1>Add a Workout</h1>
   {% endif %}
 </div>
 
-<form action="" method="post" class="form-container">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <button type="submit" class="btn submit">Submit!</button>
-</form>
+<div class="w-75" >
+  <form action="" method="post" class="form-container">
+      {% csrf_token %}
+      <table>
+          {{ form.as_table }}
+      </table>
+      <button type="submit" class="btn submit">Submit!</button>
+  </form>
+</div>
 {% endblock content %}
