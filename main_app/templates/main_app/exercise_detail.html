@@ -1,16 +1,12 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 
 {% block head %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/exercise-details.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/exercise-details.css' %}" />
 {% endblock %}
 
 {% block content %}
-  
+
 <div class="card">
   <div class="card-bg"></div>
   <div class="card-content">
@@ -18,10 +14,10 @@
     <p>Targeted muscle: {{ exercise.muscle }}</p>
     <p>Description: {{ exercise.description }}</p>
     <p>Sets: {{ exercise.sets }}</p>
-    <p>Reps: {{ exercise.reps }}</p> 
+    <p>Reps: {{ exercise.reps }}</p>
   </div>
 </div>
-<a href="{% url 'exercises_update' exercise.id %}" class="btn warn">Edit</a>
-<a href="{% url 'exercises_delete' exercise.id %}" class="btn danger">Delete</a>
+<a href="{% url 'exercises_update' exercise.id %}" class="btn-outline-warn">Edit</a>
+<a href="{% url 'exercises_delete' exercise.id %}" class="btn-outline-danger">Delete</a>
 
 {% endblock %}

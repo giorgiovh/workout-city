@@ -2,26 +2,32 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
 {% endblock %}
 
 {% block content %}
 <section class="page-header">
-    <div class="workout-container">
-        <img src="{% static 'images/goku-db-training.gif' %}" alt="Goku Training"/>
-    </div>
-    <img src="" alt=""/>
+  <div class="workout-container">
+    <img src="{% static 'images/goku-db-training.gif' %}" alt="Goku Training" />
+  </div>
 </section>
 
 {% if not user.is_authenticated %}
 <section>
-    <form action="{% url 'home' %}" method="post" class="login">
-      <h1>Login</h1>
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="hidden" name="next" value="{{ next }}">
-      <button type="submit" class="btn submit">Login</button>
-    </form>
-  </section>
-  {% endif %}
+
+
+
+
+
+
+  
+  <form action="{% url 'home' %}" method="post" class="login">
+    <h1>Login</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="btn-outline-success submit">Login</button>
+  </form>
+</section>
+{% endif %}
 {% endblock %}
