@@ -20,4 +20,5 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
     path('nutritions/create/', views.NutritionCreate.as_view(), name='nutritions_create'),
     path('nutritions/<int:pk>/', views.NutritionDetail.as_view(), name='nutritions_detail'),
+    path('nutritions/', views.NutritionList.as_view(), name='nutritions_index'),
 ]
