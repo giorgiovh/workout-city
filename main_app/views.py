@@ -97,6 +97,6 @@ def add_didworkout(request, workout_id):
         new_didworkout.save()
     return redirect('workouts_detail', workout_id=workout_id)
 
-# def assoc_exercise(request, workout_id, exercise_id):
-#   Workout.objects.get(id=workout_id).exercises.add(exercise_id)
-#   return redirect('workouts_detail', workout_id=workout_id)
+def assoc_exercise(request, workout_id, exercise_id):
+  Workout.objects.get(id=workout_id).exercises.add(exercise_id)
+  return redirect('workouts_detail', workout_id=workout_id)
