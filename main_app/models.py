@@ -49,7 +49,9 @@ class DidWorkout(models.Model):
 
     def __str__(self):
         return f"{self.get_did_workout_display()} on {self.date}"
-    
+
+    def get_absolute_url(self):
+        return reverse("workouts_detail", kwargs={'workout_id': self.workout.id})
     class Meta:
         ordering = ['-date']
         
