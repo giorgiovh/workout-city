@@ -18,4 +18,5 @@ urlpatterns = [
     path('exercises/<int:pk>/update', views.ExerciseUpdate.as_view(), name='exercises_update'),
     path('exercises/<int:pk>/delete/', views.ExerciseDelete.as_view(), name='exercises_delete'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('nutrtions/create/', views.NutritionCreate.as_view(), name='nutrtions_create'),
 ]
