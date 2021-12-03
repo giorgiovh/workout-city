@@ -2,19 +2,10 @@
 {% load static %}
 
 {% block head %}
-<link 
-  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
-  rel="stylesheet" 
-/>
-<script 
-  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
->
+<link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js">
 </script>
-<link 
-  rel="stylesheet" 
-  type="text/css" 
-  href="{% static 'css/workout-detail.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/workout-detail.css' %}" />
 <script defer src="{% static 'js/workout-detail.js' %}"></script>
 <script defer src="{% static 'js/detail.js' %}"></script>
 {% endblock %}
@@ -80,7 +71,7 @@
           {% endif %}
             {% csrf_token %}
             {{ did_workout_form.as_p }}
-            <button type="submit" class="btn submit">Log</button>
+            <button type="submit" class="btn-success submit">Log</button>
           </form>
         <h3>Past Workouts</h3>
         {% if workout.didworkout_set.all.count %}
@@ -142,7 +133,7 @@
                   </a>
                   <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" class="btn submit">Add Exercise</button>
+                    <button type="submit" class="btn-success submit">Add Exercise</button>
                   </form>
                 </div>
               {% endfor %}
