@@ -94,15 +94,13 @@
           {% if workout.exercises.count %}
           {% for exercise in workout.exercises.all %}
           <div class="exercise-container">
-            <div class="color-block">
-            </div>
-            <a href="{% url 'exercises_detail' exercise.id %}">
+            <a style="text-decoration:none" href="{% url 'exercises_detail' exercise.id %}">
               <p>{{ exercise.name }}</p>
             </a>
           </div>
           {% endfor %}
           {% else %}
-          <p class="no-exercises">{{workout.muscle_grp}} doesn't have any exercises 😞</p>
+          <p class="no-exercises">Add some {{workout.muscle_grp}} exercises to the routine!</p>
           {% endif %}
         </div>
         <hr />
