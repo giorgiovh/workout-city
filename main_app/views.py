@@ -125,7 +125,9 @@ class DidWorkoutUpdate(LoginRequiredMixin, UpdateView):
     model = DidWorkout
     fields = ['date', 'did_workout']
 
-
+class DidWorkoutDelete(LoginRequiredMixin, DeleteView):
+    model = DidWorkout
+    success_url = '/workouts/'
 class NutritionCreate(LoginRequiredMixin, CreateView):
     model = Nutrition
     fields = ['name_of_food', 'calories', 'day', 'meal']
