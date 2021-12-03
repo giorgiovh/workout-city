@@ -77,7 +77,10 @@ def assoc_exercise(request, workout_id, exercise_id):
 class WorkoutCreate(LoginRequiredMixin, CreateView):
     model = Workout
     fields = ['muscle_grp', 'day_of_week', 'description']
-    success_url = '/workouts/'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class WorkoutUpdate(LoginRequiredMixin, UpdateView):
