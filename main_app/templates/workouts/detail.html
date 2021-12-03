@@ -13,19 +13,18 @@
   <div class="row">
     <div class="col">
       <section class="workout-container">
-        <div class="workout-img">
-          {% comment %} <img src="{% static 'images/' %}" alt=""> {% endcomment %}
-        </div>
         <div class="workout-details">
-          <h1>{{ workout.muscle_grp }}</h1>
-          <h2>{{ workout.day_of_week }}</h2>
-          <p>{{ workout.description }}</p>
+          <h1>Workout: {{ workout.muscle_grp }}</h1>
+          <h2>Day of the Week: {{ workout.day_of_week }}</h2>
+          <p>Info: {{ workout.description }}</p>
           <div class="workout-actions">
             <a href="{% url 'workouts_update' workout.id %}" class="btn warn">Edit</a>
             <a href="{% url 'workouts_delete' workout.id %}" class="btn danger">Delete</a>
           </div>
         </div>
       </section>
+      <hr />
+      <!--SECTION BREAK ADD BOOTSTRAP HERE-->
       <div class="workouts-exercise-container">
         <section class="workouts">
           <div class="subsection-title">
@@ -111,7 +110,7 @@
             </a>
             <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
               {% csrf_token %}
-              <button type="submit" class="btn-success submit">Add Exercise</button>
+              <button type="submit" class="btn btn-primary submit">Add Exercise</button>
             </form>
           </div>
           {% endfor %}
