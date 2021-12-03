@@ -13,12 +13,9 @@ from pathlib import Path
 import environ
 env = environ.Env()
 environ.Env.read_env()
-# import django_on_heroku django_on_heroku.settings(locals())
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -29,10 +26,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 #! Set Debug = False (For Deployment)
 DEBUG = True
-#! Add '127.0.0.1', '.herokuapp.com' into Allowed Hosts (For Deployment)
 ALLOWED_HOSTS = ["*"]
-
-#! Otherwise keep as is for App Development
 
 # Application definition
 INSTALLED_APPS = [
@@ -77,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'workoutcity.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -87,7 +80,6 @@ DATABASES = {
         'NAME': 'workoutcity',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -107,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -120,7 +111,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -135,7 +125,6 @@ LOGIN_REDIRECT_URL = 'home'
 
 # Redirects on successful logout
 LOGOUT_REDIRECT_URL = 'home'
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
