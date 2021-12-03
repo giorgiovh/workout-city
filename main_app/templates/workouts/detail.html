@@ -12,17 +12,21 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <section class="workout-container">
-        <div class="workout-details">
-          <h1>Workout: {{ workout.muscle_grp }}</h1>
-          <h2>Day of the Week: {{ workout.day_of_week }}</h2>
-          <p>Info: {{ workout.description }}</p>
-          <div class="workout-actions">
-            <a href="{% url 'workouts_update' workout.id %}" class="btn btn-warning">Edit</a>
-            <a href="{% url 'workouts_delete' workout.id %}" class="btn btn-danger">Delete</a>
-          </div>
+      <section class="hexagon">
+        <div class="hexagon-cell">
+          <h1 class="hexagon-cell__title">Workout: {{ workout.muscle_grp }}</h1>
         </div>
+    </div>
+    <div class="break"></div>
+    <div class="header_subtext">
+      <h2 class="hexagon-cell__para>small"><small>Day of the Week: {{ workout.day_of_week }}</small></h2>
+      <p class="hexagon-cell__para>small"><small>Info: {{ workout.description }}</small></p>
+      <div class="workout-actions">
+        <a href="{% url 'workouts_update' workout.id %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'workouts_delete' workout.id %}" class="btn btn-danger">Delete</a>
+      </div>
       </section>
+      <div class="break"></div>
       <hr />
       <!--SECTION BREAK ADD BOOTSTRAP HERE-->
       <div class="workouts-exercise-container">
