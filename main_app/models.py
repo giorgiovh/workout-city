@@ -49,8 +49,21 @@ class DidWorkout(models.Model):
 
     def __str__(self):
         return f"{self.get_did_workout_display()} on {self.date}"
-    
+
+    def get_absolute_url(self):
+        return reverse("workouts_detail", kwargs={'workout_id': self.workout.id})
     class Meta:
         ordering = ['-date']
         
+class Nutrition(models.Model):
+    name_of_food = models.CharField(max_length=50)
+    calories = models.CharField(max_length=50)
+    day = models.CharField(max_length=50)
+    meal = models.CharField(max_length=50)
+    user = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name_of_food
     
+    def get_absolute_url(self):
+        return reverse("nutritions_detail", kwargs={"pk": self.id})

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
-from .models import Workout, Exercise
+from .models import Workout, Exercise, DidWorkout, Nutrition
 from .forms import DidWorkoutForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -67,6 +67,7 @@ def add_didworkout(request, workout_id):
         new_didworkout.save()
     return redirect('workouts_detail', workout_id=workout_id)
 
+
 @login_required
 def assoc_exercise(request, workout_id, exercise_id):
     Workout.objects.get(id=workout_id).exercises.add(exercise_id)
@@ -110,3 +111,25 @@ class ExerciseUpdate(LoginRequiredMixin, UpdateView):
 class ExerciseDelete(LoginRequiredMixin, DeleteView):
     model = Exercise
     success_url = '/exercises/'
+
+class DidWorkoutUpdate(LoginRequiredMixin, UpdateView):
+    model = DidWorkout
+    fields = ['date', 'did_workout']
+
+class NutritionCreate(LoginRequiredMixin, CreateView):
+    model = Nutrition
+    fields = ['name_of_food', 'calories', 'day', 'meal']
+
+class NutritionList(LoginRequiredMixin, ListView):
+  model = Nutrition
+
+class NutritionDetail(LoginRequiredMixin, DetailView):
+  model = Nutrition
+
+class NutritionUpdate(LoginRequiredMixin, UpdateView):
+  model = Nutrition
+  fields = ['name_of_food', 'calories', 'day', 'meal']
+
+class NutritionDelete(LoginRequiredMixin, DeleteView):
+  model = Nutrition
+  success_url = '/nutritions/'
