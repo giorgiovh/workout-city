@@ -34,18 +34,6 @@
           <div class="subsection-title">
             <h2>Weekly Workout Tracker</h2>
             <h4 class="progress-msg">Get your workouts in!</h4>
-            {% comment %} <img 
-              src="{% static 'images/' %}" 
-              alt=""
-            />
-            <img 
-              src="{% static 'images/' %}"
-              alt=""
-            />
-            <img 
-              src="{% static 'images/' %}" 
-              alt=""
-            /> {% endcomment %}
           </div>
           <div style="position: relative;">
             <img class="kamehameha" src="{% static 'images/kamehameha.png' %}" alt="" style="width: 100px;">
@@ -74,7 +62,7 @@
         {% if workout.didworkout_set.all.count %}
           <table>
             <thead>
-              <tr><th>Date</th><th>Did you Workout?</th><th></th></tr>
+              <tr><th>Date</th><th>Did you Workout?</th></tr>
             </thead>
             <tbody>
               {% for didworkout in workout.didworkout_set.all %}
@@ -82,6 +70,7 @@
                   <td>{{didworkout.date}}</td>
                   <td>{{didworkout.get_did_workout_display}}</td>
                   <td><a href="{% url 'didworkouts_update' didworkout.id %}" class="btn warn">Edit</a></td>
+                  <td><a href="{% url 'didworkouts_delete' didworkout.id %}" class="btn warn">Delete</a></td>
                 </tr>
               {% endfor %}
             </tbody>
@@ -93,9 +82,6 @@
         <section class="exercises">
           <div class="subsection-title">
             <h2>Exercises</h2>
-            {% comment %} <img src="{% static 'images/' %}" alt="" />
-            <img src="{% static 'images/' %}" alt="" />
-            <img src="{% static 'images/' %}" alt="" /> {% endcomment %}
           </div>
           <h3>{{ workout.muscle_grp }}'s exercises</h3>
           <div class="subsection-content">
@@ -117,7 +103,6 @@
           <h3>Available exercises</h3>
           <div class="subsection-content">
       </div>
-            {% comment %} We'll display available exercises here {% endcomment %}
             {% if exercises.count %}
               {% for exercise in exercises.all %}
                 <div class="exercise-container">
