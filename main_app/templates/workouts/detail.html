@@ -78,7 +78,8 @@
             {{user.username}}?</p>
           {% endif %}
         </section>
-        <hr /> <!--SECTION BREAK ADD BOOTSTRAP HERE-->
+        <hr />
+        <!--SECTION BREAK ADD BOOTSTRAP HERE-->
         <section class="exercises">
           <h3>{{ workout.muscle_grp }} Routine</h3>
           <div class="subsection-content">
@@ -96,7 +97,8 @@
             <p class="no-exercises">{{workout.muscle_grp}} doesn't have any exercises 😞</p>
             {% endif %}
           </div>
-          <hr /><!--SECTION BREAK ADD BOOTSTRAP HERE-->
+          <hr />
+          <!--SECTION BREAK ADD BOOTSTRAP HERE-->
           <h3>Available exercises</h3>
           <div class="subsection-content">
           </div>
@@ -105,7 +107,7 @@
           <div class="exercise-container">
             <div class="color-block" style="background-color: {{ exercise.color }}"></div>
             <a href="{% url 'exercises_detail' exercise.id %}">
-              <p>A {{ exercise.color }} {{ exercise.name }}</p>
+              <p>{{ exercise.name }}</p>
             </a>
             <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
               {% csrf_token %}
