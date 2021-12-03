@@ -14,7 +14,7 @@ addWorkoutDateBtn.addEventListener("click", (evt) => {
             progressNumber+= 25;
             progressBarEl.setAttribute("style", `width: ${progressNumber}%`)
             if (progressNumber === 100) {
-                progressMsgEl.innerText = "It's over 9000! You're one step closer to Super Saiyan status";
+                progressMsgEl.innerText = "It's over 9000! You've done all your workouts for the month and are one step closer to Super Saiyan status";
                 progressBarEl.classList.add("bg-warning");
             }
         }
