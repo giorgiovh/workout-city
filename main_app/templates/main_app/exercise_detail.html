@@ -1,27 +1,27 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 
 {% block head %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/exercise-details.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/exercise-details.css' %}" />
 {% endblock %}
 
 {% block content %}
-  
-<div class="card">
-  <div class="card-bg"></div>
-  <div class="card-content">
-    <h2>{{ exercise.name }}</h2>
-    <p>Targeted muscle: {{ exercise.muscle }}</p>
-    <p>Description: {{ exercise.description }}</p>
-    <p>Sets: {{ exercise.sets }}</p>
-    <p>Reps: {{ exercise.reps }}</p> 
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-bg"></div>
+        <div class="card-content">
+          <h2>{{ exercise.name }}</h2>
+          <p>Targeted muscle: {{ exercise.muscle }}</p>
+          <p>Description: {{ exercise.description }}</p>
+          <p>Sets: {{ exercise.sets }}</p>
+          <p>Reps: {{ exercise.reps }}</p>
+        </div>
+      </div>
+      <a href="{% url 'exercises_update' exercise.id %}" class="btn-warn">Edit</a>
+      <a href="{% url 'exercises_delete' exercise.id %}" class="btn-danger">Delete</a>
+    </div>
   </div>
 </div>
-<a href="{% url 'exercises_update' exercise.id %}" class="btn warn">Edit</a>
-<a href="{% url 'exercises_delete' exercise.id %}" class="btn danger">Delete</a>
-
 {% endblock %}

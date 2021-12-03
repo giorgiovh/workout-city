@@ -2,24 +2,30 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}" />
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
-  {% if object %}
-    <h1>Edit {{object.name_of_food}}</h1>
-  {% else %}
-    <h1>Add Nutrition</h1>
-  {% endif %}
-  {% comment %} <img src="{% static '' %}" alt=""/> {% endcomment %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
+        {% if object %}
+        <h1>Edit {{object.name_of_food}}</h1>
+        {% else %}
+        <h1>Add Nutrition</h1>
+        {% endif %}
+        {% comment %} <img src="{% static '' %}" alt="" /> {% endcomment %}
+      </div>
+      <form action="" method="post" class="form-container" autocomplete="off">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <button type="submit" class="btn-success submit">Submit!</button>
+      </form>
+    </div>
+  </div>
 </div>
-<form action="" method="post" class="form-container" autocomplete="off">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <button type="submit" class="btn submit">Submit!</button>
-</form>
 
 {% endblock %}

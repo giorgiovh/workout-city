@@ -2,24 +2,29 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}" />
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
-  {% if object %}
-    <h1>Edit {{object.name}}</h1>
-  {% else %}
-    <h1>Add an Exercise</h1>
-  {% endif %}
-  {% comment %} <img src="" alt=""/> {% endcomment %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
+        {% if object %}
+        <h1>Edit {{object.name}}</h1>
+        {% else %}
+        <h1>Add an Exercise</h1>
+        {% endif %}
+        {% comment %} <img src="" alt="" /> {% endcomment %}
+      </div>
+      <form action="" method="post" class="form-container" autocomplete="off">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <button type="submit" class="btn-success submit">Submit!</button>
+      </form>
+    </div>
+  </div>
 </div>
-<form action="" method="post" class="form-container" autocomplete="off">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <button type="submit" class="btn submit">Submit!</button>
-</form>
-
 {% endblock %}
