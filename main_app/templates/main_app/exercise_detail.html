@@ -2,13 +2,12 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/exercise-details.css' %}" />
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/exercise-details.css' %}" /> {% endcomment %}
 {% endblock %}
 
 {% block content %}
 <div class="container">
-  <div class="row">
-    <div class="col">
+    <div class="col-lg-4 col-lg-offset-4">
       <div class="card">
         <div class="card-bg"></div>
         <div class="card-content">
@@ -19,9 +18,8 @@
           <p>Reps: {{ exercise.reps }}</p>
         </div>
       </div>
-      <a href="{% url 'exercises_update' exercise.id %}" class="btn-warn">Edit</a>
-      <a href="{% url 'exercises_delete' exercise.id %}" class="btn-danger">Delete</a>
+      <a href="{% url 'exercises_update' exercise.id %}" class="btn btn-warning">Edit</a>
+      <a href="{% url 'exercises_delete' exercise.id %}" class="btn btn-danger">Delete</a>
     </div>
-  </div>
 </div>
 {% endblock %}
