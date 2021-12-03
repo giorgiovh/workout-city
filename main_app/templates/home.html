@@ -22,7 +22,7 @@
               <form action="{% url 'home' %}" method="post" class="login justify-content-around align-items-center">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="hidden" name="next" value="{{ next }}">
+                <input class="" type="hidden" name="next" value="{{ next }}">
                 <button type="submit" class="btn btn-success w-100 font-weight-bold mt-2 submit">Login</button>
               </form>
               <div class="text-center sideline mt-2">OR</div>
