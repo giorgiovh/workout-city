@@ -56,6 +56,7 @@ def workouts_detail(request, workout_id):
         'exercises': exercises_workout_doesnt_have
     })
 
+
 @login_required
 def add_didworkout(request, workout_id):
     form = DidWorkoutForm(request.POST)
@@ -97,6 +98,10 @@ class ExerciseCreate(LoginRequiredMixin, CreateView):
     model = Exercise
     fields = '__all__'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 class ExerciseList(LoginRequiredMixin, ListView):
     model = Exercise
@@ -115,24 +120,34 @@ class ExerciseDelete(LoginRequiredMixin, DeleteView):
     model = Exercise
     success_url = '/exercises/'
 
+
 class DidWorkoutUpdate(LoginRequiredMixin, UpdateView):
     model = DidWorkout
     fields = ['date', 'did_workout']
+
 
 class NutritionCreate(LoginRequiredMixin, CreateView):
     model = Nutrition
     fields = ['name_of_food', 'calories', 'day', 'meal']
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
 class NutritionList(LoginRequiredMixin, ListView):
-  model = Nutrition
+    model = Nutrition
+
 
 class NutritionDetail(LoginRequiredMixin, DetailView):
-  model = Nutrition
+    model = Nutrition
+
 
 class NutritionUpdate(LoginRequiredMixin, UpdateView):
-  model = Nutrition
-  fields = ['name_of_food', 'calories', 'day', 'meal']
+    model = Nutrition
+    fields = ['name_of_food', 'calories', 'day', 'meal']
+
 
 class NutritionDelete(LoginRequiredMixin, DeleteView):
-  model = Nutrition
-  success_url = '/nutritions/'
+    model = Nutrition
+    success_url = '/nutritions/'
