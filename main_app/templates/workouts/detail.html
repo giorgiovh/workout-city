@@ -71,7 +71,7 @@
           {% endif %}
             {% csrf_token %}
             {{ did_workout_form.as_p }}
-            <button type="submit" class="btn submit">Log</button>
+            <button type="submit" class="btn-success submit">Log</button>
           </form>
         <h3>Past Workouts</h3>
         {% if workout.didworkout_set.all.count %}
@@ -133,7 +133,7 @@
                   </a>
                   <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" class="btn submit">Add Exercise</button>
+                    <button type="submit" class="btn-success submit">Add Exercise</button>
                   </form>
                 </div>
               {% endfor %}
