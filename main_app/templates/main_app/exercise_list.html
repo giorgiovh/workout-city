@@ -17,17 +17,18 @@
 
 <section class="honeycomb">
   {% for exercise in exercise_list %}
-  <div class="honeycomb-cell">
-    <div class="card-bg"></div>
-    <a style="text-decoration:none" href="{% url 'exercises_detail' exercise.id %}">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img class="honeycomb-cell__image" src="{% static 'images/barbell-dl gray.jpg' %}" alt="">
+  <a style="text-decoration:none" href="{% url 'exercises_detail' exercise.id %}">
+    <div class="honeycomb-cell">
+      <div class="card-bg"></div>
+        <div class="card-content">
+          <div class="card-img-container">
+            <img class="honeycomb-cell__image" src="{% static 'images/barbell-dl gray.jpg' %}" alt="">
+          </div>
+          <h2 class="honeycomb-cell__title">{{ exercise.name }}</h2>
         </div>
-        <h2 class="honeycomb-cell__title">{{ exercise.name }}</h2>
       </div>
-    </a>
-  </div>
+    </div>
+  </a>
   {% endfor %}
 </section>
 <br>
