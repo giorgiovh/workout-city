@@ -58,6 +58,9 @@
           <button type="submit" class="btn btn-primary submit">Log Date</button>
           <button class="btn btn-primary submit log-week">"Kame-hame-haaa!!!"</button>
         </form>
+      </section>
+      <hr />
+      <section>
         <h3>Past Workouts</h3>
         {% if workout.didworkout_set.all.count %}
         <table>
@@ -72,8 +75,8 @@
             <tr>
               <td>{{didworkout.date}}</td>
               <td>{{didworkout.get_did_workout_display}}</td>
-              <td><a href="{% url 'didworkouts_update' didworkout.id %}" class="btn warn">Edit</a></td>
-              <td><a href="{% url 'didworkouts_delete' didworkout.id %}" class="btn warn">Delete</a></td>
+              <td><a href="{% url 'didworkouts_update' didworkout.id %}" class="btn btn-warning">Edit</a></td>
+              <td><a href="{% url 'didworkouts_delete' didworkout.id %}" class="btn btn-danger">Delete</a></td>
             </tr>
             {% endfor %}
           </tbody>
