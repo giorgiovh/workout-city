@@ -18,8 +18,8 @@
           <h2>Day of the Week: {{ workout.day_of_week }}</h2>
           <p>Info: {{ workout.description }}</p>
           <div class="workout-actions">
-            <a href="{% url 'workouts_update' workout.id %}" class="btn warn">Edit</a>
-            <a href="{% url 'workouts_delete' workout.id %}" class="btn danger">Delete</a>
+            <a href="{% url 'workouts_update' workout.id %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'workouts_delete' workout.id %}" class="btn btn-danger">Delete</a>
           </div>
         </div>
       </section>
