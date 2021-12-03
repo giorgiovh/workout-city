@@ -131,7 +131,7 @@ STATIC_URL = '/static/'
 LOGIN_URL = 'home'
 
 # This variable will redirect successful logins
-LOGIN_REDIRECT_URL = 'workouts_index'
+LOGIN_REDIRECT_URL = 'home'
 
 # Redirects on successful logout
 LOGOUT_REDIRECT_URL = 'home'
