@@ -5,19 +5,16 @@
 
 <div class="page-header">
   <h1>Delete Workout?</h1>
-  <img src=""{% static '' %} alt="">
+  <img src="" {% static '' %} alt="">
 </div>
 <h2>Are you sure you want to delete {{ object.name }}?</h2>
 
 <form action="" method="POST" class="form">
   {% csrf_token %}
-  <a 
-    href="{% url 'workouts_detail' workout.id %}" 
-    class="btn secondary"
-  >
+  <a href="{% url 'workouts_detail' workout.id %}" class="btn secondary">
     Cancel
   </a>
-  <button type="submit" class="btn danger">Yes - Delete!</button>
+  <button type="submit" class="btn-danger">Yes - Delete!</button>
 </form>
 
 {% endblock %}
