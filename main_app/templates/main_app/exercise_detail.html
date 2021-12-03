@@ -17,7 +17,7 @@
     <p>Reps: {{ exercise.reps }}</p>
   </div>
 </div>
-<a href="{% url 'exercises_update' exercise.id %}" class="btn-outline-warn">Edit</a>
-<a href="{% url 'exercises_delete' exercise.id %}" class="btn-outline-danger">Delete</a>
+<a href="{% url 'exercises_update' exercise.id %}" class="btn-warn">Edit</a>
+<a href="{% url 'exercises_delete' exercise.id %}" class="btn-danger">Delete</a>
 
 {% endblock %}
