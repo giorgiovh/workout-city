@@ -117,7 +117,7 @@
         {% for exercise in exercises.all %}
         <div class="container card d-flex">
           <div class="row">
-            <div class="col col-sm-4 col-md-4 col-lg-6">
+            <div class="col-sm col-sm-4 col-md-4 col-lg-6">
               <a href="{% url 'exercises_detail' exercise.id %}">
                 <p>{{ exercise.name }}</p>
               </a>
