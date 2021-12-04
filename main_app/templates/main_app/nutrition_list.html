@@ -3,16 +3,16 @@
 
 {% block content %}
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Nutrition</h1>
-      {% comment %} <img src="{% static 'images/' %}" alt="" />
-      <img src="{% static 'images/' %}" alt="" />
-      <img src="{% static 'images/' %}" alt="" />
-      <img src="{% static 'images/' %}" alt="" /> {% endcomment %}
-      <section class="card-container">
+  <h1 class="text-center">Nutrition</h1>
+  {% comment %} <img src="{% static 'images/' %}" alt="" />
+  <img src="{% static 'images/' %}" alt="" />
+  <img src="{% static 'images/' %}" alt="" />
+  <img src="{% static 'images/' %}" alt="" /> {% endcomment %}
+  <section class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-sm-6 col-md-4 text-center">
         {% for nutrition in nutrition_list %}
-        <div class="card">
+        <div class="card text-center">
           <div class="card-bg"></div>
           <a href="{% url 'nutritions_detail' nutrition.id %}">
             <div class="card-content">
@@ -21,12 +21,12 @@
           </a>
         </div>
         {% endfor %}
-      </section>
-      <br>
-      <br>
-      <br>
-      <a class="nav-link" href="{% url 'nutritions_create' %}">Add Nutrition</a>
+      </div>
     </div>
-  </div>
+  </section>
+  <br>
+  <br>
+  <br>
+  <a class="btn btn-primary" href="{% url 'nutritions_create' %}">Add Nutrition</a>
 </div>
 {% endblock %}
