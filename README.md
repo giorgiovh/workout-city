@@ -16,8 +16,8 @@ Once logged in, as a user you'll be able to utilize the full power of the Workou
 
 ***
 
-![](images/.png)
-![](images/.png)
+![WorkoutCity Screenshot](main_app/static/images/README.md-SS.jpg)
+![WorkoutCity Screenshot](main_app/static/images/README.md-SS2.jpg)
 
 ## Stack: Workout City is a full-stack Django web application using:
 
