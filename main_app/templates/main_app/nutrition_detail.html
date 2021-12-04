@@ -2,24 +2,30 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/nutrition-detail.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/exercise-details.css' %}" />
 {% endblock %}
 
 {% block content %}
-<div class="container ">
-  <div class="card justify-content-center align-items-center">
-    <div class="card-bg"></div>
-    <div class="card-content justify-content-center align-items-center">
-      <h2>Food: {{ nutrition.name_of_food }}</h2>
-      <h2>Calories: {{ nutrition.calories }} calories</h2>
-      <h2>Day: {{ nutrition.day }}</h2>
-      <h2>Meal: {{ nutrition.meal }}</h2>
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <section class="hexagon">
+        <div class="hexagon-cell">
+          <h1 class="hexagon-cell__title">Food: {{ nutrition.name_of_food }}</h1>
+        </div>
+      </section>
+    </div>
+    <div class="break"></div>
+    <div class="header_subtext">
+      <h2 class="hexagon-cell__para>small">Calories: {{ nutrition.calories }} calories</h2>
+      <p>Day: {{ nutrition.day }}</p>
+      <p>Meal: {{ nutrition.meal }}</p>
+
+      <div class="workout-actions">
+        <a href="{% url 'nutritions_update' nutrition.id %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'nutritions_delete' nutrition.id %}" class="btn btn-danger">Delete</a>
+      </div>
     </div>
   </div>
-  <div class="text-center">
-    <a href="{% url 'nutritions_update' nutrition.id %}" class="btn btn-warning">Edit</a>
-    <a href="{% url 'nutritions_delete' nutrition.id %}" class="btn btn-danger">Delete</a>
-  </div>
 </div>
-
 {% endblock %}
