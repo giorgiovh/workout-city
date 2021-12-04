@@ -12,7 +12,7 @@
 
 ***
 
-Once logged in, as a user you'll be able to utilize the full power of the Workout City application to Create, Update and Delete all your favorite Workouts, Exercises and Nutriotion Plans.PostgresSQL database allows the user to save their data in their user profile for later use. You can then make unique lists of Workouts and Exercises to suit your tastes, read descriptions of the individual content you've added from your creation.
+Once logged in, as a user you'll be able to utilize the full power of the Workout City application to Create, Update and Delete all your favorite Workouts, Exercises and Nutrition Plans. PostgreSQL database allows the user to save their data in their user profile for later use.
 
 ***
 
