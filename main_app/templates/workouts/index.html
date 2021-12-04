@@ -7,8 +7,11 @@
 
 {% block content %}
 
-<section class="page-header">
+<section class="page-header" style="display:block; text-align:center;">
     <h1>Workouts</h1>
+    <div>
+        <a class="btn btn-primary" href="{% url 'workouts_create' %}">Add Workout</a>
+    </div>
 </section>
 
 <section class="honeycomb">
@@ -30,5 +33,5 @@
 <br>
 <br>
 <br>
-<a class="nav-link" href="{% url 'workouts_create' %}">Add Workout</a>
+{% comment %} <a class="nav-link" href="{% url 'workouts_create' %}">Add Workout</a> {% endcomment %}
 {% endblock content %}
