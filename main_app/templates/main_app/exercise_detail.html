@@ -15,10 +15,13 @@
         </div>
       </section>
     </div>
-    <p>Targeted muscle: {{ exercise.muscle }}</p>
-    <p>Description: {{ exercise.description }}</p>
-    <p>Sets: {{ exercise.sets }}</p>
-    <p>Reps: {{ exercise.reps }}</p>
+    <div class="break"></div>
+    <div class="header_subtext">
+      <h2>Targeted muscle: {{ exercise.muscle }}</h2>
+      <p>Description: {{ exercise.description }}</p>
+      <p>Sets: {{ exercise.sets }}</p>
+      <p>Reps: {{ exercise.reps }}</p>
+    </div>
 
 
     <a href="{% url 'exercises_update' exercise.id %}" class="btn btn-warning">Edit</a>
