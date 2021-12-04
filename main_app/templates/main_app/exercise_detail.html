@@ -17,15 +17,18 @@
     </div>
     <div class="break"></div>
     <div class="header_subtext">
-      <h2>Targeted muscle: {{ exercise.muscle }}</h2>
-      <p>Description: {{ exercise.description }}</p>
+      <h2 class="hexagon-cell__para>small">Targeted muscle: {{ exercise.muscle }}</h2>
+      <p>Info: {{ exercise.description }}</p>
       <p>Sets: {{ exercise.sets }}</p>
       <p>Reps: {{ exercise.reps }}</p>
+
+      <div class="workout-actions">
+        <a href="{% url 'exercises_update' exercise.id %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'exercises_delete' exercise.id %}" class="btn btn-danger">Delete</a>
+      </div>
     </div>
 
 
-    <a href="{% url 'exercises_update' exercise.id %}" class="btn btn-warning">Edit</a>
-    <a href="{% url 'exercises_delete' exercise.id %}" class="btn btn-danger">Delete</a>
   </div>
 </div>
 {% endblock %}
