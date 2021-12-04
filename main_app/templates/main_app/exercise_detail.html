@@ -2,17 +2,19 @@
 {% load static %}
 
 {% block head %}
-{% comment %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/exercise-details.css' %}" /> {% endcomment %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/exercise-details.css' %}" />
 {% endblock %}
 
 {% block content %}
 <div class="container text-center">
   <div class="row">
     <div class="col">
-      
+      <section class="hexagon">
+        <div class="hexagon-cell">
+          <h1 class="hexagon-cell__title">Exercise: {{ exercise.name }}</h1>
+        </div>
+      </section>
     </div>
-    <h2>{{ exercise.name }}</h2>
     <p>Targeted muscle: {{ exercise.muscle }}</p>
     <p>Description: {{ exercise.description }}</p>
     <p>Sets: {{ exercise.sets }}</p>
