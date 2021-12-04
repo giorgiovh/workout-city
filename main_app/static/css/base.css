@@ -2,7 +2,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  background: #3ea0eb;
+  background: linear-gradient(to bottom, #000428, #004683)
 }
 
 .page-header {
