@@ -35,7 +35,8 @@
     <!--SECTION BREAK ADD BOOTSTRAP HERE-->
     <div class="workouts-exercise-container">
       <section class="workouts">
-        <div class="weekly-tracker" style="background-image: url('/static/images/kamehousewide.jpeg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="weekly-tracker"
+          style="background-image: url('/static/images/kamehousewide.jpeg'); background-repeat: no-repeat; background-size: cover;">
           <h2>Weekly Workout Tracker</h2>
           <h4 class="progress-msg">Get your workouts in!</h4>
           <div class="break"></div>
@@ -114,15 +115,19 @@
         </div>
         {% if exercises.count %}
         {% for exercise in exercises.all %}
-        <div class="exercise-container">
-          <div class="color-block" style="background-color: {{ exercise.color }}"></div>
-          <a href="{% url 'exercises_detail' exercise.id %}">
-            <p>{{ exercise.name }}</p>
-          </a>
-          <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-primary submit">Add Exercise</button>
-          </form>
+        <div class="container card d-flex">
+          <div class="row">
+            <div class="col col-sm-4 col-md-4 col-lg-6">
+              <a href="{% url 'exercises_detail' exercise.id %}">
+                <p>{{ exercise.name }}</p>
+              </a>
+              <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary submit">Add Exercise</button>
+              </form>
+            </div>
+          </div>
+          {% comment %} <div class="color-block" style="background-color: {{ exercise.color }}"></div> {% endcomment %}
         </div>
         {% endfor %}
         {% endif %}
