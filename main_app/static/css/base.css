@@ -178,8 +178,6 @@ body {
 }
 
 
-h1, h2, h3, h4, p, table, button, .btn {
-
 h1,
 h2,
 h3,
@@ -188,7 +186,6 @@ p,
 table,
 button,
 .btn {
-
   margin: 10px;
 }
 
