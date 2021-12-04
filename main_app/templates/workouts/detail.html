@@ -33,9 +33,10 @@
     <!--SECTION BREAK ADD BOOTSTRAP HERE-->
     <div class="workouts-exercise-container">
       <section class="workouts">
-        <div class="weekly-tracker" style="background-image: url('/static/images/kamehouse.jpeg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="weekly-tracker" style="background-image: url('/static/images/kamehousewide.jpeg'); background-repeat: no-repeat; background-size: cover;">
           <h2>Weekly Workout Tracker</h2>
           <h4 class="progress-msg">Get your workouts in!</h4>
+          <div class="break"></div>
           <div style="position: relative;">
             <img class="kamehameha" src="{% static 'images/kamehameha.png' %}" alt="" style="width: 100px;">
 
@@ -44,6 +45,7 @@
               <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
                 aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
             </div>
+            <div class="break"></div>
           </div>
           <h3>Log Workout</h3>
           <form action={% url 'add_didworkout' workout.id %} method="post" class="subsection-content">
