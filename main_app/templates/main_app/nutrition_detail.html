@@ -6,22 +6,20 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-bg"></div>
-        <div class="card-content">
-          <h2>{{ nutrition.name_of_food }}</h2>
-          <h2>{{ nutrition.calories }} calories</h2>
-          <h2>{{ nutrition.day }}</h2>
-          <h2>{{ nutrition.meal }}</h2>
-        </div>
-      </div>
-      <a href="{% url 'nutritions_update' nutrition.id %}" class="btn warn">Edit</a>
-      <a href="{% url 'nutritions_delete' nutrition.id %}" class="btn danger">Delete</a>
-
+<div class="container ">
+  <div class="card justify-content-center align-items-center">
+    <div class="card-bg"></div>
+    <div class="card-content justify-content-center align-items-center">
+      <h2>Food: {{ nutrition.name_of_food }}</h2>
+      <h2>Calories: {{ nutrition.calories }} calories</h2>
+      <h2>Day: {{ nutrition.day }}</h2>
+      <h2>Meal: {{ nutrition.meal }}</h2>
     </div>
   </div>
+  <div class="text-center">
+    <a href="{% url 'nutritions_update' nutrition.id %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'nutritions_delete' nutrition.id %}" class="btn btn-danger">Delete</a>
+  </div>
 </div>
+
 {% endblock %}

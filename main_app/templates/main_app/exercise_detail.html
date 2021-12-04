@@ -2,23 +2,33 @@
 {% load static %}
 
 {% block head %}
-{% comment %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/exercise-details.css' %}" /> {% endcomment %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/exercise-details.css' %}" />
 {% endblock %}
 
 {% block content %}
 <div class="container text-center">
-  <div class="card">
-    <div class="card-bg"></div>
-    <div class="card-content">
-      <h2>{{ exercise.name }}</h2>
-      <p>Targeted muscle: {{ exercise.muscle }}</p>
-      <p>Description: {{ exercise.description }}</p>
+  <div class="row">
+    <div class="col">
+      <section class="hexagon">
+        <div class="hexagon-cell">
+          <h1 class="hexagon-cell__title">Exercise: {{ exercise.name }}</h1>
+        </div>
+      </section>
+    </div>
+    <div class="break"></div>
+    <div class="header_subtext">
+      <h2 class="hexagon-cell__para>small">Targeted muscle: {{ exercise.muscle }}</h2>
+      <p>Info: {{ exercise.description }}</p>
       <p>Sets: {{ exercise.sets }}</p>
       <p>Reps: {{ exercise.reps }}</p>
+
+      <div class="workout-actions">
+        <a href="{% url 'exercises_update' exercise.id %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'exercises_delete' exercise.id %}" class="btn btn-danger">Delete</a>
+      </div>
     </div>
+
+
   </div>
-  <a href="{% url 'exercises_update' exercise.id %}" class="btn btn-warning">Edit</a>
-  <a href="{% url 'exercises_delete' exercise.id %}" class="btn btn-danger">Delete</a>
 </div>
 {% endblock %}

@@ -1,52 +1,186 @@
-main {
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #3ea0eb;
+}
+
+.page-header {
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    min-height: auto;
-  }
-  
-  .card {
-    width: 224px;
-    height: 224px;
-    margin: 25px 25px 15px 40px;
-    border: solid 2px;
-    box-shadow: var(--card-box-shadow);
+    justify-content: center;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.hexagon {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    transform: translateY(34.375px);
+}
+
+.hexagon-cell {
+    flex: 0 1 250px;
+    max-width: 250px;
+    height: 137.5px;
+    margin: 65.4761904762px 12.5px 25px;
     position: relative;
-  }
-  
-  .card-bg{
-    opacity: .4;
-    position: absolute;
-    display: inline-flex;
-    top: 0;
+    padding: 0.5em;
+    text-align: center;
+    z-index: 1;
+}
+
+.hexagon-cell__title {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-break: break-word;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.75em;
+    transition: opacity 350ms;
+}
+
+.hexagon-cell__para>small {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-break: break-word;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1em;
+    transition: opacity 350ms;
+}
+
+.hexagon-cell__image {
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+}
+
+.hexagon-cell::before,
+.hexagon-cell::after {
+    content: "";
+}
+
+.hexagon-cell::before,
+.hexagon-cell::after,
+.hexagon-cell__image {
+    top: -50%;
     left: 0;
     width: 100%;
-    height: 100%;
-  }
-  
-  .card-content {
-    padding: 15px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    flex-direction: column;
-    color: var(--text-color);
-  }
-  
-  .btn {
-    margin-bottom: 15px;
-  }
-  
-  .card h2 {
-    margin: 7px 0;
-    font-size: var(--font-xl);
-    z-index: 1;
-  }
-  
-  .card p {
-    margin: 0;
-    font-size: var(--font-reg);
-    z-index: 1;
-  }
+    height: 200%;
+    display: block;
+    position: absolute;
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+}
+
+.hexagon-cell::before {
+    background: #fff;
+    transform: scale(1.055);
+}
+
+.hexagon-cell::after {
+    background: #3ea0eb;
+    opacity: 0.5;
+    transition: opacity 350ms;
+}
+
+.hexagon-cell:hover .hexagon-cell__title {
+    opacity: 0;
+}
+
+.hexagon-cell:hover::before {
+    background: #72f88e;
+}
+
+.hexagon-cell:hover::after {
+    opacity: 0;
+}
+
+.hexagon__placeholder {
+    display: none;
+    opacity: 0;
+    width: 250px;
+    margin: 0 12.5px;
+}
+
+@media (max-width: 550px) {
+    .hexagon-cell {
+        margin: 81.25px 25px;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 825px) {
+    .hexagon-cell:nth-child(3n) {
+        margin-right: calc(50% - 125px);
+        margin-left: calc(50% - 125px);
+    }
+
+    .hexagon__placeholder:nth-child(3n+5) {
+        display: block;
+    }
+}
+
+@media (min-width: 825px) and (max-width: 1100px) {
+    .hexagon-cell:nth-child(5n+4) {
+        margin-left: calc(50% - 275px);
+    }
+
+    .hexagon-cell:nth-child(5n+5) {
+        margin-right: calc(50% - 275px);
+    }
+
+    .hexagon__placeholder:nth-child(5n),
+    .hexagon__placeholder:nth-child(5n+3) {
+        display: block;
+    }
+}
+
+@media (min-width: 1100px) {
+    .hexagon-cell:nth-child(7n+5) {
+        margin-left: calc(50% - 400px);
+    }
+
+    .hexagon-cell:nth-child(7n+7),
+    .hexagon-cell:nth-child(7n+5):nth-last-child(2) {
+        margin-right: calc(50% - 400px);
+    }
+
+    .hexagon__placeholder:nth-child(7n+7),
+    .hexagon__placeholder:nth-child(7n+9),
+    .hexagon__placeholder:nth-child(7n+11) {
+        display: block;
+    }
+}
+
+/* HEADER STYLING*/
+.header_subtext{
+    text-align: center;
+}
+
+.break {
+    margin-bottom: 100px;
+}
