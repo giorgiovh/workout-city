@@ -35,5 +35,7 @@ Once logged in, as a user you'll be able to utilize the full power of the Workou
 
 ## Next Steps:
 
-* Include a video streaming feature that shows user how to do any exercise you query
+* Include a video streaming feature that shows user how to do any exercise they add to their profile or query from an API we apply to the app.
 * Body Fat Tracker feature
+* Dashboard feature on user's personal profile page
+* A graph/chart that displays the user's progress displaying how often they've been working out based off their logs.
