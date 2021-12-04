@@ -16,10 +16,11 @@
             <img class="img-fluid" src="{% static 'images/goku-db-training.gif' %}" alt="Goku Training"
               style="min-height:100%;" />
           </div>
-          <div class="col-md-6 bg-white p-5">
+          <div class="col-md-6 bg-white p-5" style="color:black;">
             <h4 class="pb-3 text-center">Login</h4>
             <div class="form-style">
-              <form action="{% url 'home' %}" method="post" class="login justify-content-around align-items-center">
+              <form action="{% url 'home' %}" method="post"
+                class="login justify-content-around align-items-center">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input class="" type="hidden" name="next" value="{{ next }}">
@@ -46,7 +47,8 @@
     <div class="row">
       <div class="col">
         <div class="d-flex justify-content-center">
-          <img class="img-fluid" src="{% static 'images/clothes-ripping-flexing.gif' %}" alt="Explosive Flex" style="min-height:100%;" />
+          <img class="img-fluid" src="{% static 'images/clothes-ripping-flexing.gif' %}" alt="Explosive Flex"
+            style="min-height:100%;" />
         </div>
       </div>
     </div>
