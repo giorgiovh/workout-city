@@ -19,17 +19,16 @@ Once logged in, as a user you'll be able to utilize the full power of the Workou
 ![WorkoutCity Screenshot](main_app/static/images/README.md-SS.jpg)
 ![WorkoutCity Screenshot](main_app/static/images/README.md-SS2.jpg)
 
-## Stack: Workout City is a full-stack Django web application using:
+## Stack: Workout City is a full-stack web application using:
 
 1. Python
 2. PostgreSQL
+3. Django
 
 ## Additional technologies include:
 
 * HTML5 / CSS3
 * Bootstrap
-* Django
-* Django Auth
 
 ***
 
