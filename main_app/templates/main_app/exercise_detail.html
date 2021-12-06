@@ -11,14 +11,14 @@
     <div class="col">
       <section class="hexagon">
         <div class="hexagon-cell">
-          <h1 class="hexagon-cell__title">Exercise: {{ exercise.name }}</h1>
+          <h1 class="hexagon-cell__title">{{ exercise.name }}</h1>
         </div>
       </section>
     </div>
     <div class="break"></div>
     <div class="header_subtext" style="color:white;">
-      <h2 class="hexagon-cell__para>small">Targeted muscle: {{ exercise.muscle }}</h2>
-      <p>Info: {{ exercise.description }}</p>
+      <h2 class="hexagon-cell__para>small">{{ exercise.muscle }}</h2>
+      <p>{{ exercise.description }}</p>
       <p>Sets: {{ exercise.sets }}</p>
       <p>Reps: {{ exercise.reps }}</p>
 
