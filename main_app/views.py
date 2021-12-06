@@ -132,7 +132,6 @@ class DidWorkoutDelete(LoginRequiredMixin, DeleteView):
         workout_id = self.object.workout.id
         return reverse_lazy('workouts_detail', kwargs={'workout_id': workout_id})
 
-    
 class NutritionCreate(LoginRequiredMixin, CreateView):
     model = Nutrition
     fields = ['name_of_food', 'calories', 'day', 'meal']
