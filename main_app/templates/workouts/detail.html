@@ -15,14 +15,14 @@
     <div class="col">
       <section class="hexagon">
         <div class="hexagon-cell">
-          <h1 class="hexagon-cell__title">Workout: {{ workout.muscle_grp }}</h1>
+          <h1 class="hexagon-cell__title">{{ workout.muscle_grp }}</h1>
         </div>
       </section>
     </div>
     <div class="break"></div>
     <div class="header_subtext">
-      <h2 class="hexagon-cell__para>small"><small>Day of the Week: {{ workout.day_of_week }}</small></h2>
-      <p class="hexagon-cell__para>small"><small>Info: {{ workout.description }}</small></p>
+      <h2 class="hexagon-cell__para>small"><small>{{ workout.day_of_week }}</small></h2>
+      <p class="hexagon-cell__para>small"><small>{{ workout.description }}</small></p>
       <div class="workout-actions">
         <a href="{% url 'workouts_update' workout.id %}" class="btn btn-warning">Edit</a>
         <a href="{% url 'workouts_delete' workout.id %}" class="btn btn-danger">Delete</a>
@@ -97,44 +97,52 @@
         <h3>{{ workout.muscle_grp }} Routine</h3>
         <div class="subsection-content">
           {% if workout.exercises.count %}
-          {% for exercise in workout.exercises.all %}
-          <div class="exercise-container">
-            <a style="text-decoration:none" href="{% url 'exercises_detail' exercise.id %}">
-              <p>{{ exercise.name }}</p>
-            </a>
+          <div class="container">
+            <div class="row">
+              {% for exercise in workout.exercises.all %}
+              <div class="col-3">
+                <a style="text-decoration:none;color:white;" href="{% url 'exercises_detail' exercise.id %}">
+                  <p>{{ exercise.name }}</p>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
           </div>
-          {% endfor %}
           {% else %}
           <p class="no-exercises">Add some {{workout.muscle_grp}} exercises to the routine!</p>
           {% endif %}
         </div>
         <hr />
         <!--SECTION BREAK ADD BOOTSTRAP HERE-->
-        <h3>Available exercises</h3>
+        <h3>Available Exercises</h3>
         <div class="subsection-content">
         </div>
         {% if exercises.count %}
-        {% for exercise in exercises.all %}
-        <div class="container card d-flex">
+        <div class="container">
           <div class="row">
-            <div class="col-sm col-sm-4 col-md-4 col-lg-6">
-              <a href="{% url 'exercises_detail' exercise.id %}">
-                <p>{{ exercise.name }}</p>
-              </a>
-              <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary submit">Add Exercise</button>
-              </form>
+            {% for exercise in exercises.all %}
+            <div class="col col-4 col-sm-4 col-md-3 col-lg-2 align-items-center">
+              <div class="card d-flex justify-content-center align-items-center">
+                <a href="{% url 'exercises_detail' exercise.id %}">
+                  <p>{{ exercise.name }}</p>
+                </a>
+                <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-primary submit">Add Exercise</button>
+                </form>
+              </div>
             </div>
+            {% endfor %}
           </div>
           {% comment %} <div class="color-block" style="background-color: {{ exercise.color }}"></div> {% endcomment %}
         </div>
-        {% endfor %}
         {% endif %}
     </div>
   </div>
 </div>
-</div>
+<br />
+<br />
+<br />
 {% endblock %}
 
 <!--this is a test comment-->

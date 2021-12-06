@@ -14,6 +14,7 @@ from django.urls import reverse, reverse_lazy
 
 # Create your views here.
 
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':
@@ -22,7 +23,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()  # Add user to database
             login(request, user)  # Login the user
-            return redirect('workouts_index')
+            return redirect('home')
         else:
             error_message = 'Invalid sign up - try again'
             # If a bad GET or POST request, render empty form
@@ -30,16 +31,20 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
 
+
 class Home(LoginView):
     template_name = 'home.html'
 
+
 def about(request):
     return render(request, 'about.html')
+
 
 @login_required
 def workouts_index(request):
     workouts = Workout.objects.filter(user=request.user)
     return render(request, 'workouts/index.html', {'workouts': workouts})
+
 
 @login_required
 def workouts_detail(request, workout_id):
@@ -53,6 +58,7 @@ def workouts_detail(request, workout_id):
         'exercises': exercises_workout_doesnt_have
     })
 
+
 @login_required
 def add_didworkout(request, workout_id):
     form = DidWorkoutForm(request.POST)
@@ -64,10 +70,12 @@ def add_didworkout(request, workout_id):
         new_didworkout.save()
     return redirect('workouts_detail', workout_id=workout_id)
 
+
 @login_required
 def assoc_exercise(request, workout_id, exercise_id):
     Workout.objects.get(id=workout_id).exercises.add(exercise_id)
     return redirect('workouts_detail', workout_id=workout_id)
+
 
 class WorkoutCreate(LoginRequiredMixin, CreateView):
     model = Workout
@@ -77,13 +85,16 @@ class WorkoutCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 class WorkoutUpdate(LoginRequiredMixin, UpdateView):
     model = Workout
     fields = ['muscle_grp', 'day_of_week', 'description']
 
+
 class WorkoutDelete(LoginRequiredMixin, DeleteView):
     model = Workout
     success_url = '/workouts/'
+
 
 class ExerciseCreate(LoginRequiredMixin, CreateView):
     model = Exercise
@@ -93,27 +104,28 @@ class ExerciseCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 class ExerciseList(LoginRequiredMixin, ListView):
     model = Exercise
 
+
 class ExerciseDetail(LoginRequiredMixin, DetailView):
     model = Exercise
+
 
 class ExerciseUpdate(LoginRequiredMixin, UpdateView):
     model = Exercise
     fields = '__all__'
 
+
 class ExerciseDelete(LoginRequiredMixin, DeleteView):
     model = Exercise
     success_url = '/exercises/'
 
+
 class DidWorkoutUpdate(LoginRequiredMixin, UpdateView):
     model = DidWorkout
     fields = ['date', 'did_workout']
-
-# class DidWorkoutDelete(LoginRequiredMixin, DeleteView):
-#     model = DidWorkout
-#     success_url = '/workouts/'
 class DidWorkoutDelete(LoginRequiredMixin, DeleteView):
     model = DidWorkout
     def get_success_url(self):
@@ -129,15 +141,19 @@ class NutritionCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 class NutritionList(LoginRequiredMixin, ListView):
     model = Nutrition
+
 
 class NutritionDetail(LoginRequiredMixin, DetailView):
     model = Nutrition
 
+
 class NutritionUpdate(LoginRequiredMixin, UpdateView):
     model = Nutrition
     fields = ['name_of_food', 'calories', 'day', 'meal']
+
 
 class NutritionDelete(LoginRequiredMixin, DeleteView):
     model = Nutrition
