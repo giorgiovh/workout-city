@@ -13,10 +13,10 @@
 
       <form action="" method="POST" class="form">
         {% csrf_token %}
-        <a href="{% url 'workouts_detail' workout.id %}" class="btn secondary">
+        <a href="{% url 'workouts_detail' workout.id %}" class="btn btn-secondary">
           Cancel
         </a>
-        <button type="submit" class="btn-danger">Yes - Delete!</button>
+        <button type="submit" class="btn btn-danger">Yes - Delete!</button>
       </form>
     </div>
   </div>
