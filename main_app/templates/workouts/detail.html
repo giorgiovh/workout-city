@@ -98,10 +98,14 @@
         <div class="subsection-content">
           {% if workout.exercises.count %}
           {% for exercise in workout.exercises.all %}
-          <div class="exercise-container">
-            <a style="text-decoration:none" href="{% url 'exercises_detail' exercise.id %}">
-              <p>{{ exercise.name }}</p>
-            </a>
+          <div class="container">
+            <div class="row-3">
+              <div class="col-3">
+                <a style="text-decoration:none;color:white;" href="{% url 'exercises_detail' exercise.id %}">
+                  <p>{{ exercise.name }}</p>
+                </a>
+              </div>
+            </div>
           </div>
           {% endfor %}
           {% else %}
@@ -115,16 +119,18 @@
         </div>
         {% if exercises.count %}
         {% for exercise in exercises.all %}
-        <div class="container card d-flex">
+        <div class="container">
           <div class="row">
-            <div class="col-sm col-sm-4 col-md-4 col-lg-6">
-              <a href="{% url 'exercises_detail' exercise.id %}">
-                <p>{{ exercise.name }}</p>
-              </a>
-              <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary submit">Add Exercise</button>
-              </form>
+            <div class="col-4 col-sm-4 col-md-3 col-lg-2 align-items-center">
+              <div class="card d-flex justify-content-center align-items-center">
+                <a href="{% url 'exercises_detail' exercise.id %}">
+                  <p>{{ exercise.name }}</p>
+                </a>
+                <form action="{% url 'assoc_exercise' workout.id exercise.id %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-primary submit">Add Exercise</button>
+                </form>
+              </div>
             </div>
           </div>
           {% comment %} <div class="color-block" style="background-color: {{ exercise.color }}"></div> {% endcomment %}
