@@ -15,14 +15,14 @@
     <div class="col">
       <section class="hexagon">
         <div class="hexagon-cell">
-          <h1 class="hexagon-cell__title">Workout: {{ workout.muscle_grp }}</h1>
+          <h1 class="hexagon-cell__title">{{ workout.muscle_grp }}</h1>
         </div>
       </section>
     </div>
     <div class="break"></div>
     <div class="header_subtext">
-      <h2 class="hexagon-cell__para>small"><small>Day of the Week: {{ workout.day_of_week }}</small></h2>
-      <p class="hexagon-cell__para>small"><small>Info: {{ workout.description }}</small></p>
+      <h2 class="hexagon-cell__para>small"><small>{{ workout.day_of_week }}</small></h2>
+      <p class="hexagon-cell__para>small"><small>{{ workout.description }}</small></p>
       <div class="workout-actions">
         <a href="{% url 'workouts_update' workout.id %}" class="btn btn-warning">Edit</a>
         <a href="{% url 'workouts_delete' workout.id %}" class="btn btn-danger">Delete</a>
