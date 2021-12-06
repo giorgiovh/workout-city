@@ -9,6 +9,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse, reverse_lazy
+
 
 # Create your views here.
 
@@ -124,12 +126,11 @@ class ExerciseDelete(LoginRequiredMixin, DeleteView):
 class DidWorkoutUpdate(LoginRequiredMixin, UpdateView):
     model = DidWorkout
     fields = ['date', 'did_workout']
-
-
 class DidWorkoutDelete(LoginRequiredMixin, DeleteView):
     model = DidWorkout
-    success_url = '/workouts/'
-
+    def get_success_url(self):
+        workout_id = self.object.workout.id
+        return reverse_lazy('workouts_detail', kwargs={'workout_id': workout_id})
 
 class NutritionCreate(LoginRequiredMixin, CreateView):
     model = Nutrition
