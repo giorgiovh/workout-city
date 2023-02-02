@@ -7,4 +7,6 @@ admin.site.register(DidWorkout)
 admin.site.register(Exercise)
 admin.site.register(Nutrition)
 
+# test comment
+
 
